@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FríOS — El sistema operativo de los negocios fríos</title>
+<meta name="description" content="Ventas, inventario, turnos, domicilios, eventos y finanzas para negocios de granizados, micheladas, siropes y licores. Funciona sin internet. Hecho en Buenaventura.">
+<meta name="theme-color" content="#08080a">
+<meta name="author" content="FríOS">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="FríOS">
+<meta property="og:title" content="FríOS — El sistema operativo de los negocios fríos">
+<meta property="og:description" content="Saber cuánto vendiste es fácil. FríOS te dice cuánto te quedó. Para granizados, micheladas, siropes y licores.">
+<meta property="og:image" content="https://friospage.github.io/frios-compartir.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://friospage.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&display=swap">
+
+<style>
+/* ============================================================
+   FríOS · Landing
+   Identidad heredada del sistema (index.html de FríOS v1.5)
+   Negro #08080a · Rojo #E10600 · Plata #C8CDD2 · Anton + Poppins
+   ============================================================ */
+
+:root{
+  --negro:#08080a;
+  --panel:#121216;
+  --panel-2:#17171c;
+  --panel-3:#1d1d24;
+  --rojo:#E10600;
+  --rojo-hot:#FF2D1A;
+  --rojo-deep:#5e0200;
+  --plata:#C8CDD2;
+  --plata-dim:#7d828a;
+  --blanco:#ffffff;
+  --verde:#34e29a;
+  --ambar:#ffc24b;
+  --linea:rgba(200,205,210,.12);
+  --linea-fuerte:rgba(200,205,210,.22);
+
+  --r-sm:10px;
+  --r:16px;
+  --r-lg:22px;
+
+  --ancho:1180px;
+  --gutter:clamp(20px,5vw,40px);
+  --bloque:clamp(58px,7vw,98px);
+
+  --t-display:clamp(2.6rem,7.2vw,5.6rem);
+  --t-h2:clamp(2rem,4.6vw,3.4rem);
+  --t-h3:clamp(1.15rem,2vw,1.45rem);
+  --t-body:clamp(1rem,1.15vw,1.09rem);
+  --t-sm:.925rem;
+  --t-eyebrow:.72rem;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth;overflow-x:clip}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--negro);
+  color:var(--plata);
+  font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:var(--t-body);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+img{max-width:100%;display:block}
+
+h1,h2,h3,h4{margin:0;color:var(--blanco);text-wrap:balance;line-height:1.05}
+p{margin:0}
+a{color:inherit}
+
+/* Anton lleva tildes altas: con interlineado menor a 1.08 se recortan */
+.display{
+  font-family:'Anton',Impact,'Arial Narrow Bold',sans-serif;
+  font-weight:400;
+  text-transform:uppercase;
+  letter-spacing:.005em;
+  line-height:1.09;
+}
+
+/* ---------- utilidades de estructura ---------- */
+.envoltura{width:100%;max-width:var(--ancho);margin-inline:auto;padding-inline:var(--gutter)}
+.seccion{padding-block:var(--bloque);position:relative}
+.pila{display:flex;flex-direction:column}
+.gap-8{gap:8px}.gap-12{gap:12px}.gap-16{gap:16px}.gap-20{gap:20px}
+.gap-24{gap:24px}.gap-32{gap:32px}.gap-40{gap:40px}.gap-56{gap:clamp(36px,5vw,56px)}
+
+.eyebrow{
+  font-size:var(--t-eyebrow);
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--plata-dim);
+  margin:0;
+}
+.eyebrow--rojo{color:var(--rojo-hot)}
+
+.encabezado-seccion{max-width:44ch}
+.encabezado-seccion h2{font-size:var(--t-h2)}
+.encabezado-seccion p{color:var(--plata-dim);max-width:56ch}
+
+.hairline{height:1px;background:var(--linea);border:0;margin:0}
+
+/* ---------- marca ---------- */
+.marca{
+  font-family:'Poppins',sans-serif;
+  font-weight:600;
+  letter-spacing:-.01em;
+  color:var(--blanco);
+  display:inline-flex;
+  align-items:center;
+  gap:.12em;
+  text-decoration:none;
+  line-height:1;
+}
+.marca .os{
+  color:var(--rojo);
+  text-shadow:0 0 18px rgba(225,6,0,.65),0 0 44px rgba(225,6,0,.32);
+}
+.marca .copo{
+  color:var(--blanco);
+  font-size:.78em;
+  margin-left:.1em;
+  filter:drop-shadow(0 0 10px rgba(255,255,255,.35));
+}
+
+/* ---------- barra superior ---------- */
+.barra{
+  position:sticky;top:0;z-index:50;
+  background:transparent;
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease,background .3s ease;
+}
+.barra.pegada{
+  border-bottom-color:var(--linea);
+  background:rgba(8,8,10,.92);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.barra__fila{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;height:66px;
+}
+.barra .marca{font-size:1.32rem}
+.barra__enlaces{display:none;gap:30px;align-items:center}
+.barra__enlaces a{
+  font-size:var(--t-sm);color:var(--plata-dim);text-decoration:none;
+  transition:color .2s ease;
+}
+.barra__enlaces a:hover{color:var(--blanco)}
+@media (min-width:900px){.barra__enlaces{display:flex}}
+
+/* ---------- botones ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:'Poppins',sans-serif;font-size:var(--t-sm);font-weight:600;
+  letter-spacing:.02em;
+  padding:13px 24px;border-radius:100px;border:1px solid transparent;
+  text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:transform .18s ease,box-shadow .25s ease,background .2s ease,border-color .2s ease,color .2s ease;
+}
+.btn:focus-visible{outline:2px solid var(--blanco);outline-offset:3px}
+
+.btn--rojo{
+  background:var(--rojo);color:var(--blanco);
+  box-shadow:0 0 0 rgba(225,6,0,0),0 10px 30px -12px rgba(225,6,0,.9);
+}
+.btn--rojo:hover{
+  background:var(--rojo-hot);transform:translateY(-2px);
+  box-shadow:0 0 26px rgba(225,6,0,.5),0 16px 38px -14px rgba(225,6,0,1);
+}
+.btn--fantasma{
+  background:transparent;color:var(--plata);border-color:var(--linea-fuerte);
+}
+.btn--fantasma:hover{color:var(--blanco);border-color:var(--plata-dim);transform:translateY(-2px)}
+.btn--grande{padding:16px 32px;font-size:1rem}
+.btn--bloque{width:100%}
+
+.acciones{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding-block:clamp(58px,9vw,104px) clamp(40px,6vw,64px);overflow:hidden}
+.hero__resplandor{
+  position:absolute;top:-42%;left:50%;transform:translateX(-50%);
+  width:min(1100px,150vw);aspect-ratio:1/.72;
+  background:radial-gradient(ellipse at center,rgba(225,6,0,.30) 0%,rgba(225,6,0,.11) 34%,rgba(225,6,0,0) 68%);
+  pointer-events:none;z-index:0;
+}
+.hero__contenido{position:relative;z-index:1;text-align:center;align-items:center}
+.hero .marca{font-size:clamp(2.9rem,9vw,4.6rem)}
+.hero__lema{
+  font-size:clamp(.66rem,1.5vw,.8rem);font-weight:500;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--plata-dim);
+  margin-top:6px;
+}
+.hero h1{
+  font-size:var(--t-display);
+  max-width:17ch;
+  margin-top:clamp(28px,4vw,44px);
+}
+.hero h1 .resalte{
+  color:var(--rojo);
+  text-shadow:0 0 26px rgba(225,6,0,.45);
+}
+.hero__bajada{
+  font-size:clamp(1.02rem,1.5vw,1.18rem);
+  color:var(--plata);max-width:52ch;margin-top:22px;
+}
+.hero .acciones{justify-content:center;margin-top:34px}
+
+.sellos{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;
+  margin-top:30px;font-size:.82rem;color:var(--plata-dim);
+}
+.sello{display:inline-flex;align-items:center;gap:8px}
+.sello::before{
+  content:"";width:5px;height:5px;border-radius:50%;
+  background:var(--rojo);box-shadow:0 0 8px rgba(225,6,0,.9);flex:none;
+}
+
+/* ---------- panel de producto ---------- */
+.panel{
+  background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid var(--linea);
+  border-radius:var(--r-lg);
+  overflow:hidden;
+}
+.panel__cabecera{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px 20px;border-bottom:1px solid var(--linea);
+  background:rgba(255,255,255,.015);
+}
+.panel__titulo{
+  font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--plata);
+}
+.panel__cuerpo{padding:clamp(18px,3vw,26px)}
+
+.chip{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 12px;border-radius:100px;
+  border:1px solid var(--linea-fuerte);color:var(--plata-dim);
+  white-space:nowrap;
+}
+.chip--vivo{color:var(--blanco);border-color:rgba(225,6,0,.5)}
+.chip--vivo .punto{
+  width:6px;height:6px;border-radius:50%;background:var(--rojo);
+  box-shadow:0 0 9px rgba(225,6,0,1);
+  animation:latido 2.4s ease-in-out infinite;
+}
+@keyframes latido{0%,100%{opacity:1}50%{opacity:.32}}
+.chip--ok{color:var(--verde);border-color:rgba(52,226,154,.34)}
+.chip--alerta{color:var(--ambar);border-color:rgba(255,194,75,.34)}
+
+/* filas de datos, como en el sistema */
+.filas{display:flex;flex-direction:column}
+.fila{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding:13px 0;border-bottom:1px solid var(--linea);
+}
+.fila:last-child{border-bottom:0}
+.fila__etiqueta{color:var(--plata-dim);font-size:var(--t-sm)}
+.fila__valor{
+  color:var(--blanco);font-weight:600;font-variant-numeric:tabular-nums;
+  font-size:1.02rem;white-space:nowrap;
+}
+.fila--total{border-top:1px solid var(--linea-fuerte);border-bottom:0;margin-top:6px;padding-top:20px}
+.fila--total .fila__etiqueta{color:var(--blanco);font-weight:600;font-size:1rem}
+.fila--total .fila__valor{
+  font-family:'Anton',sans-serif;font-weight:400;
+  font-size:clamp(1.9rem,4.4vw,2.5rem);line-height:1;
+  color:var(--blanco);
+}
+.fila__valor--verde{color:var(--verde)}
+.fila__valor--ambar{color:var(--ambar)}
+.fila__valor--rojo{color:var(--rojo-hot)}
+
+.nota-panel{
+  margin-top:18px;padding:14px 16px;border-radius:var(--r-sm);
+  background:rgba(225,6,0,.055);border:1px solid rgba(225,6,0,.2);
+  color:var(--plata);font-size:var(--t-sm);line-height:1.55;
+}
+.nota-panel b{color:var(--blanco);font-weight:600}
+
+/* rejilla del hero: panel doble */
+.tablero{
+  display:grid;gap:clamp(16px,2.4vw,22px);
+  grid-template-columns:1fr;
+  margin-top:clamp(40px,6vw,64px);
+}
+@media (min-width:900px){.tablero{grid-template-columns:1.32fr 1fr;align-items:start}}
+
+/* zonas de domicilio */
+.zona{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:13px 0;border-bottom:1px solid var(--linea);
+}
+.zona:last-of-type{border-bottom:0}
+.zona__nombre{color:var(--blanco);font-weight:500;font-size:var(--t-sm)}
+.zona__detalle{color:var(--plata-dim);font-size:.8rem;display:block;font-weight:400}
+.zona__neto{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ---------- rejillas ---------- */
+.rejilla{display:grid;gap:clamp(14px,2vw,20px)}
+.rejilla>*{min-width:0}
+.rejilla--2{grid-template-columns:1fr}
+.rejilla--3{grid-template-columns:1fr}
+.rejilla--4{grid-template-columns:1fr}
+@media (min-width:560px){
+  .rejilla--4{grid-template-columns:1fr 1fr}
+}
+@media (min-width:680px){
+  .rejilla--2{grid-template-columns:1fr 1fr}
+  .rejilla--3{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1020px){
+  .rejilla--4{grid-template-columns:repeat(4,1fr)}
+}
+
+.tarjeta{
+  background:var(--panel);
+  border:1px solid var(--linea);
+  border-radius:var(--r);
+  padding:clamp(20px,2.6vw,26px);
+  display:flex;flex-direction:column;gap:11px;
+  transition:border-color .25s ease,background .25s ease,transform .25s ease;
+}
+.tarjeta:hover{border-color:var(--linea-fuerte);background:var(--panel-2);transform:translateY(-3px)}
+.tarjeta h3{font-size:var(--t-h3);font-weight:600;font-family:'Poppins',sans-serif;text-transform:none;letter-spacing:0}
+.tarjeta p{color:var(--plata-dim);font-size:var(--t-sm);line-height:1.6}
+
+/* módulo: encabezado con marca de rol */
+.modulo__alto{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;min-width:0}
+.modulo__alto h3{min-width:0;overflow-wrap:anywhere}
+.rol{
+  font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--plata-dim);border:1px solid var(--linea);
+  padding:4px 9px;border-radius:100px;white-space:nowrap;flex:none;
+}
+.rol--dueno{color:var(--rojo-hot);border-color:rgba(225,6,0,.34)}
+
+/* problema: tarjetas sin adorno */
+.dolor{
+  border-left:2px solid var(--rojo);
+  padding:4px 0 4px 20px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.dolor h3{font-family:'Poppins',sans-serif;text-transform:none;font-size:1.06rem;font-weight:600;letter-spacing:0}
+.dolor p{color:var(--plata-dim);font-size:var(--t-sm)}
+
+/* ---------- bloques alternos ---------- */
+.alterno{
+  display:grid;gap:clamp(26px,4vw,52px);
+  grid-template-columns:1fr;align-items:center;
+}
+@media (min-width:920px){
+  .alterno{grid-template-columns:1fr 1fr}
+  .alterno--invertido .alterno__texto{order:2}
+}
+.alterno__texto{display:flex;flex-direction:column;gap:16px;max-width:52ch}
+.alterno__texto h2{font-size:clamp(1.7rem,3.2vw,2.5rem)}
+.alterno__texto p{color:var(--plata-dim)}
+.cita{
+  border-left:2px solid var(--linea-fuerte);
+  padding-left:18px;color:var(--plata);font-style:italic;font-size:var(--t-sm);
+}
+
+/* ---------- pasos ---------- */
+.paso{display:flex;gap:18px;align-items:flex-start}
+.paso__num{
+  font-family:'Anton',sans-serif;font-size:1.5rem;line-height:1;
+  color:var(--rojo);flex:none;width:38px;
+  text-shadow:0 0 16px rgba(225,6,0,.45);
+  padding-top:2px;
+}
+.paso__cuerpo{display:flex;flex-direction:column;gap:6px}
+.paso h3{font-family:'Poppins',sans-serif;text-transform:none;font-size:1.06rem;font-weight:600;letter-spacing:0}
+.paso p{color:var(--plata-dim);font-size:var(--t-sm)}
+
+/* ---------- planes ---------- */
+.planes{
+  display:grid;gap:clamp(14px,2vw,20px);
+  grid-template-columns:1fr;
+}
+.planes>*{min-width:0}
+@media (min-width:880px){
+  .planes{grid-template-columns:repeat(3,1fr);align-items:stretch}
+}
+
+.plan{
+  position:relative;
+  display:flex;flex-direction:column;
+  background:var(--panel);
+  border:1px solid var(--linea);
+  border-radius:var(--r-lg);
+  padding:clamp(24px,3vw,32px);
+}
+.plan--destacado{
+  border-color:rgba(225,6,0,.45);
+  background:
+    radial-gradient(130% 70% at 50% 0%,rgba(225,6,0,.13),transparent 62%),
+    linear-gradient(180deg,var(--panel-2),var(--panel));
+  box-shadow:0 24px 60px -34px rgba(225,6,0,.75);
+}
+.plan__cinta{
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  background:var(--rojo);color:var(--blanco);
+  font-size:.63rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  padding:5px 14px;border-radius:100px;white-space:nowrap;
+  box-shadow:0 0 22px rgba(225,6,0,.55);
+}
+.plan__nombre{
+  font-family:'Anton',sans-serif;text-transform:uppercase;
+  font-size:1.6rem;line-height:1.1;color:var(--blanco);letter-spacing:.02em;
+}
+.plan__frase{color:var(--plata-dim);font-size:var(--t-sm);margin-top:6px;min-height:3em}
+.plan__antes{color:var(--plata-dim);font-size:.8rem;margin-top:22px}
+.plan__antes s{opacity:.7;margin-right:5px}
+.plan__precio{
+  font-family:'Anton',sans-serif;color:var(--blanco);
+  font-size:clamp(2.4rem,5vw,3rem);line-height:1;margin-top:4px;
+  font-variant-numeric:tabular-nums;
+}
+.plan__precio span{
+  font-family:'Poppins',sans-serif;font-weight:500;
+  font-size:.95rem;color:var(--plata-dim);margin-left:4px;
+}
+.plan__lista{
+  list-style:none;margin:24px 0 26px;padding:0;
+  display:flex;flex-direction:column;gap:11px;flex:1;
+}
+.plan__lista li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:var(--t-sm);color:var(--plata);line-height:1.5;
+}
+.plan__lista li::before{
+  content:"";flex:none;width:14px;height:14px;margin-top:5px;border-radius:50%;
+  background:rgba(225,6,0,.16);border:1px solid rgba(225,6,0,.5);
+}
+.plan__lista b{color:var(--blanco);font-weight:600}
+.plan__ancla{
+  margin-top:14px;text-align:center;
+  font-size:.82rem;color:var(--plata);
+}
+.planes__nota{
+  margin-top:clamp(24px,3vw,34px);
+  max-width:70ch;margin-inline:auto;text-align:center;
+  font-size:var(--t-sm);color:var(--plata-dim);line-height:1.65;
+}
+.planes__nota b{color:var(--plata)}
+
+/* ---------- cobertura ---------- */
+.ciudades{display:flex;flex-wrap:wrap;gap:9px}
+.ciudad{
+  font-size:.82rem;color:var(--plata);
+  border:1px solid var(--linea);border-radius:100px;padding:7px 15px;
+}
+.ciudad--sede{color:var(--blanco);border-color:rgba(225,6,0,.45);background:rgba(225,6,0,.08)}
+
+/* ---------- formulario ---------- */
+.registro{
+  background:
+    radial-gradient(110% 90% at 50% 0%,rgba(225,6,0,.13),transparent 60%),
+    linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid var(--linea);
+  border-radius:var(--r-lg);
+  padding:clamp(26px,4vw,48px);
+}
+.campos{display:grid;gap:14px;grid-template-columns:1fr;margin-top:26px}
+@media (min-width:680px){
+  .campos{grid-template-columns:1fr 1fr}
+  .campo--ancho{grid-column:1/-1}
+}
+.campo{display:flex;flex-direction:column;gap:7px}
+.campo label{
+  font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--plata-dim);
+}
+.campo input,.campo select{
+  font-family:'Poppins',sans-serif;font-size:.95rem;
+  background:var(--panel-3);color:var(--blanco);
+  border:1px solid var(--linea);border-radius:var(--r-sm);
+  padding:13px 15px;width:100%;
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+.campo input::placeholder{color:#5f646c}
+.campo input:focus,.campo select:focus{
+  outline:none;border-color:rgba(225,6,0,.6);
+  box-shadow:0 0 0 3px rgba(225,6,0,.14);
+}
+.campo select{appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--plata-dim) 50%),linear-gradient(135deg,var(--plata-dim) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 22px,calc(100% - 15px) 22px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+}
+.campo select option{background:var(--panel-3);color:var(--blanco)}
+.aviso-form{font-size:.8rem;color:var(--plata-dim);margin-top:16px;text-align:center}
+
+/* ---------- contacto ---------- */
+.contactos{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.contacto{
+  display:flex;flex-direction:column;gap:5px;
+  border:1px solid var(--linea);border-radius:var(--r);
+  padding:20px;text-decoration:none;
+  transition:border-color .25s ease,background .25s ease,transform .25s ease;
+}
+.contacto:hover{border-color:rgba(225,6,0,.42);background:var(--panel);transform:translateY(-3px)}
+.contacto span{font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--plata-dim)}
+.contacto strong{color:var(--blanco);font-weight:600;font-size:1rem}
+
+/* ---------- pie ---------- */
+.pie{border-top:1px solid var(--linea);padding-block:44px 52px}
+.pie__fila{
+  display:flex;flex-wrap:wrap;gap:20px;
+  align-items:center;justify-content:space-between;
+}
+.pie .marca{font-size:1.2rem}
+.pie small{color:var(--plata-dim);font-size:.8rem;line-height:1.7}
+
+/* ---------- revelado al bajar ---------- */
+.revela{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.revela.dentro{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .revela{opacity:1;transform:none;transition:none}
+  .chip--vivo .punto{animation:none}
+}
+
+/* saltar al contenido, accesibilidad */
+.saltar{
+  position:absolute;left:-9999px;top:0;background:var(--rojo);color:#fff;
+  padding:12px 20px;border-radius:0 0 var(--r-sm) 0;z-index:100;
+}
+.saltar:focus{left:0}
+</style>
+</head>
+<body>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<!-- ============ BARRA ============ -->
+<header class="barra" id="barra">
+  <div class="envoltura barra__fila">
+    <a class="marca" href="#inicio">Frí<span class="os">OS</span><span class="copo">❄</span></a>
+    <nav class="barra__enlaces" aria-label="Secciones">
+      <a href="#modulos">Módulos</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#precio">Precio</a>
+      <a href="#registro">Contacto</a>
+    </nav>
+    <a class="btn btn--rojo" href="#registro" data-cta="barra">Empezar</a>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="hero__resplandor" aria-hidden="true"></div>
+  <div class="envoltura">
+    <div class="hero__contenido pila">
+      <span class="marca" aria-label="FríOS">Frí<span class="os">OS</span><span class="copo">❄</span></span>
+      <p class="hero__lema">El sistema operativo de los negocios fríos</p>
+
+      <h1 class="display">Saber cuánto vendiste es fácil. <span class="resalte">Cuánto te quedó</span> es otra cosa.</h1>
+
+      <p class="hero__bajada">
+        Ventas, inventario, turnos, domicilios, eventos y finanzas para negocios de
+        granizados, micheladas, siropes y licores. Un solo sistema, en tu propio equipo.
+      </p>
+
+      <div class="acciones">
+        <a class="btn btn--rojo btn--grande" href="#registro" data-cta="hero">Empezar ahora</a>
+        <a class="btn btn--fantasma btn--grande" href="#modulos">Ver los módulos</a>
+      </div>
+
+      <div class="sellos">
+        <span class="sello">Funciona sin internet</span>
+        <span class="sello">Tus datos quedan en tu equipo</span>
+        <span class="sello">Hecho en Buenaventura</span>
+      </div>
+    </div>
+
+    <!-- panel doble: cierre de turno + domicilios -->
+    <div class="tablero revela">
+      <div class="panel">
+        <div class="panel__cabecera">
+          <span class="panel__titulo">Cierre del turno · Noche</span>
+          <span class="chip chip--vivo"><span class="punto"></span>Turno de ejemplo</span>
+        </div>
+        <div class="panel__cuerpo">
+          <div class="filas">
+            <div class="fila">
+              <span class="fila__etiqueta">Base con la que abriste</span>
+              <span class="fila__valor">$50.000</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">Vendido en el turno · 22 vasos</span>
+              <span class="fila__valor">$304.000</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">Insumo que se consumió</span>
+              <span class="fila__valor">−$60.700</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">Margen por vaso</span>
+              <span class="fila__valor">$11.060</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">Cuadre de caja</span>
+              <span class="fila__valor fila__valor--verde">Sin diferencia</span>
+            </div>
+            <div class="fila fila--total">
+              <span class="fila__etiqueta">Te quedó</span>
+              <span class="fila__valor" data-contar="243300" data-prefijo="$">$243.300</span>
+            </div>
+          </div>
+          <p class="nota-panel">
+            La meta del día eran <b>$74.000 de margen</b>. Cinco vasos de 16 oz con licor
+            ya la pasan. De 9 oz sin licor necesitarías trece. <b>Ese es el punto.</b>
+          </p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__cabecera">
+          <span class="panel__titulo">Domicilios por zona</span>
+          <span class="chip chip--alerta">1 en pérdida</span>
+        </div>
+        <div class="panel__cuerpo">
+          <div class="zona">
+            <span class="zona__nombre">Continente
+              <span class="zona__detalle">Cobras $4.000 · llegar cuesta $5.560</span>
+            </span>
+            <span class="zona__neto fila__valor--rojo">−$1.560</span>
+          </div>
+          <div class="zona">
+            <span class="zona__nombre">Isla
+              <span class="zona__detalle">Cobras $6.000 · llegar cuesta $5.560</span>
+            </span>
+            <span class="zona__neto fila__valor--verde">+$440</span>
+          </div>
+          <p class="nota-panel">
+            En una semana floja de 18 domicilios, cada viaje se lleva $5.560 de gasolina.
+            Continente cobra $4.000: <b>cada pedido a esa zona te cuesta plata</b>. La
+            gasolina no sale de la caja, por eso nunca se nota — hasta que alguien la cuenta.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEMA ============ -->
+<section class="seccion" aria-labelledby="t-problema">
+  <div class="envoltura pila gap-56">
+    <div class="encabezado-seccion pila gap-16 revela">
+      <p class="eyebrow">El problema</p>
+      <h2 class="display" id="t-problema">El cuaderno no miente. Tampoco te dice la verdad completa.</h2>
+      <p>Anotar las ventas es la parte fácil. Lo difícil es todo lo que se descuenta después y nadie anota.</p>
+    </div>
+
+    <div class="rejilla rejilla--3 revela">
+      <div class="dolor">
+        <h3>Vendiste bastante y quedó poco</h3>
+        <p>Seis vasos grandes y seis pequeños se anotan igual en el cuaderno, pero no dejan lo mismo. Sin el costo por onza no hay forma de saber cuál te conviene empujar.</p>
+      </div>
+      <div class="dolor">
+        <h3>La caja cuadra "más o menos"</h3>
+        <p>Un error de vueltas, un vaso de cortesía, una venta sin registrar. Sin base inicial y cierre de turno, la diferencia se pierde entre el día y la noche.</p>
+      </div>
+      <div class="dolor">
+        <h3>La misma mano para el negocio y para la casa</h3>
+        <p>El mercado, el arriendo, la deuda del proveedor y tu sueldo salen del mismo bolsillo. Al final del mes no sabes cuál de los dos se comió al otro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hairline">
+
+<!-- ============ MÓDULOS ============ -->
+<section class="seccion" id="modulos" aria-labelledby="t-modulos">
+  <div class="envoltura pila gap-56">
+    <div class="encabezado-seccion pila gap-16 revela">
+      <p class="eyebrow">Los módulos</p>
+      <h2 class="display" id="t-modulos">Ocho pantallas. Cada quien ve solo la suya.</h2>
+      <p>El vendedor entra a cobrar y no ve tus márgenes. Tú ves todo. Cada perfil con su propia contraseña.</p>
+    </div>
+
+    <div class="rejilla rejilla--4 revela">
+      <article class="tarjeta">
+        <div class="modulo__alto"><h3>Inicio</h3><span class="rol">Todos</span></div>
+        <p>Cómo va el día contra la meta de margen, qué falta preparar y qué necesita tu atención ahora.</p>
+      </article>
+      <article class="tarjeta">
+        <div class="modulo__alto"><h3>Ventas</h3><span class="rol">Todos</span></div>
+        <p>Cobrar en dos toques: sabor, tamaño, con licor o sin licor. Si no hay turno abierto o no hay vasos, no deja cobrar.</p>
+      </article>
+      <article class="tarjeta">
+        <div class="modulo__alto"><h3>Inventario</h3><span class="rol">Todos</span></div>
+        <p>Tarros, vasos preparados, insumos y tolvas. Cada granizadora sabe cuántos sabores puedes servir al mismo tiempo.</p>
+      </article>
+      <article class="tarjeta">
+        <div class="modulo__alto"><h3>Turno</h3><span class="rol">Todos</span></div>
+        <p>Abres con una base, cierras contando la caja. La diferencia aparece sola, sin discusión.</p>
+      </article>
+      <article class="tarjeta">
+        <div class="modulo__alto"><h3>Eventos</h3><span class="rol rol--dueno">Dueño</span></div>
+        <p>Un evento se cotiza distinto que el punto: otro tamaño, otro precio, otro margen. Se planea por aforo y al cerrarlo dice si dejó plata.</p>
+      </article>
+      <article class="tarjeta">
+        <div class="modulo__alto"><h3>Domicilios</h3><span class="rol rol--dueno">Dueño</span></div>
+        <p>Cada viaje cuesta gasolina y desgaste aunque no salga de la caja. Compara lo que cobras por zona contra lo que te cuesta llegar.</p>
+      </article>
+      <article class="tarjeta">
+        <div class="modulo__alto"><h3>Finanzas</h3><span class="rol rol--dueno">Dueño</span></div>
+        <p>Margen real por presentación, gastos fijos y cuánto tienes que vender para no perder. Solo lo ves tú.</p>
+      </article>
+      <article class="tarjeta">
+        <div class="modulo__alto"><h3>Administración</h3><span class="rol rol--dueno">Dueño</span></div>
+        <p>Quién usa el sistema, las metas, la carta con sus precios y el respaldo de todo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="hairline">
+
+<!-- ============ DIFERENCIALES ============ -->
+<section class="seccion" aria-labelledby="t-margen">
+  <div class="envoltura pila gap-56">
+
+    <div class="alterno revela">
+      <div class="alterno__texto">
+        <p class="eyebrow eyebrow--rojo">Margen, no vasos</p>
+        <h2 class="display" id="t-margen">La meta no es vender más. Es que quede más.</h2>
+        <p>
+          FríOS calcula el costo de cada vaso solo: onzas por costo por onza, más el vaso,
+          la tapa, el pitillo y el sticker. Con eso sabe exactamente cuánto deja cada
+          presentación antes de que la vendas.
+        </p>
+        <p class="cita">"Seis vasos grandes y seis pequeños no dejan lo mismo. Por eso la meta va en margen."</p>
+      </div>
+      <div class="panel">
+        <div class="panel__cabecera">
+          <span class="panel__titulo">Margen por presentación</span>
+          <span class="chip">Carta de ejemplo</span>
+        </div>
+        <div class="panel__cuerpo">
+          <div class="filas">
+            <div class="fila">
+              <span class="fila__etiqueta">9 oz sin licor</span>
+              <span class="fila__valor fila__valor--ambar">$5.750</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">12 oz sin licor</span>
+              <span class="fila__valor">$9.245</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">12 oz con licor</span>
+              <span class="fila__valor">$12.245</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">16 oz sin licor</span>
+              <span class="fila__valor fila__valor--verde">$14.558</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">16 oz con licor</span>
+              <span class="fila__valor fila__valor--verde">$16.558</span>
+            </div>
+          </div>
+          <p class="nota-panel">
+            El licor va incluido en el tarro: producir con y sin licor <b>cuesta lo mismo</b>.
+            Los $3.000 que separan el 12 oz sin licor del 12 oz con licor son margen puro.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="hairline">
+
+    <div class="alterno alterno--invertido revela">
+      <div class="alterno__texto">
+        <p class="eyebrow eyebrow--rojo">Trabajo en equipo</p>
+        <h2 class="display">El turno de tu vendedor te llega por WhatsApp.</h2>
+        <p>
+          Tu gente cierra el turno y el sistema le da un código. Lo manda por WhatsApp,
+          tú lo pegas en FríOS y entra completo: ventas, gastos y cuadre de caja. Sin
+          servidores, sin cuentas en la nube, sin que nadie tenga que explicar nada.
+        </p>
+        <p>
+          Cada persona entra con su propia contraseña y ve solo sus pantallas. El vendedor
+          cobra e inventaría; los márgenes y las finanzas son tuyos.
+        </p>
+      </div>
+      <div class="panel">
+        <div class="panel__cabecera">
+          <span class="panel__titulo">Turno recibido · José</span>
+          <span class="chip chip--ok">Integrado</span>
+        </div>
+        <div class="panel__cuerpo">
+          <div class="filas">
+            <div class="fila">
+              <span class="fila__etiqueta">Franja</span>
+              <span class="fila__valor">Día · 11:00 a 18:00</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">Ventas registradas</span>
+              <span class="fila__valor">27</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">Gastos del turno</span>
+              <span class="fila__valor">$18.000</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">Diferencia en caja</span>
+              <span class="fila__valor fila__valor--ambar">−$2.000</span>
+            </div>
+          </div>
+          <p class="nota-panel">
+            Puede ser un error de vueltas, un vaso de cortesía o una venta sin registrar.
+            <b>Aparece el mismo día</b>, no a fin de mes.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="hairline">
+
+    <div class="alterno revela">
+      <div class="alterno__texto">
+        <p class="eyebrow eyebrow--rojo">Tu plata</p>
+        <h2 class="display">Y cuando el negocio cuadra, sigue lo tuyo.</h2>
+        <p>
+          FríOS también lleva tu sueldo, tus gastos fijos, la seguridad social y las deudas
+          — las del negocio y las tuyas. No para juzgarte: para que veas en qué orden
+          conviene pagarlas.
+        </p>
+        <p class="cita">"Cuando la deuda llegue a cero, este mismo flujo pasa a lo tuyo: ropa, viajes, ahorro e inversión. Eso ya no es gasto, es la razón de todo esto."</p>
+        <p>
+          Y si falta un dato, no lo inventa: te lo muestra incompleto y te dice cuál falta.
+        </p>
+      </div>
+      <div class="panel">
+        <div class="panel__cabecera">
+          <span class="panel__titulo">Orden sugerido de pago</span>
+          <span class="chip">Ejemplo · sugerencia, no orden</span>
+        </div>
+        <div class="panel__cuerpo">
+          <div class="filas">
+            <div class="fila">
+              <span class="fila__etiqueta">1 · Insumo de la semana</span>
+              <span class="fila__valor">$210.000</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">2 · Seguridad social</span>
+              <span class="fila__valor">$76.500</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">3 · Deuda proveedor</span>
+              <span class="fila__valor">$140.000</span>
+            </div>
+            <div class="fila">
+              <span class="fila__etiqueta">4 · Tu sueldo</span>
+              <span class="fila__valor fila__valor--verde">$300.000</span>
+            </div>
+          </div>
+          <p class="nota-panel">
+            <b>Esto es un orden posible, no una instrucción:</b> los números son tuyos y la
+            decisión también.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="hairline">
+
+<!-- ============ CÓMO EMPIEZAS ============ -->
+<section class="seccion" id="como" aria-labelledby="t-como">
+  <div class="envoltura pila gap-56">
+    <div class="encabezado-seccion pila gap-16 revela">
+      <p class="eyebrow">Cómo empiezas</p>
+      <h2 class="display" id="t-como">Tres pasos y el primer turno ya cuadra.</h2>
+      <p>No hay instalación, no hay servidor, no hay que aprenderse nada. Se abre en el navegador del equipo que ya usas.</p>
+    </div>
+
+    <div class="rejilla rejilla--3 revela">
+      <div class="paso">
+        <span class="paso__num" aria-hidden="true">01</span>
+        <div class="paso__cuerpo">
+          <h3>Cargas tu carta</h3>
+          <p>Tus sabores con su nombre y su color, los tamaños que vendes y el precio de cada uno. FríOS crea el insumo del vaso y calcula el costo solo.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <span class="paso__num" aria-hidden="true">02</span>
+        <div class="paso__cuerpo">
+          <h3>Abres el turno</h3>
+          <p>Dices con cuánta base arrancas y quién entra. Desde ahí cada venta, cada gasto y cada vaso preparado queda registrado.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <span class="paso__num" aria-hidden="true">03</span>
+        <div class="paso__cuerpo">
+          <h3>Cierras y cuentas</h3>
+          <p>Escribes lo que contaste en caja y aparece la diferencia. Al lado, cuánto vendiste, cuánto costó y cuánto te quedó.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hairline">
+
+<!-- ============ PRECIO ============ -->
+<section class="seccion" id="precio" aria-labelledby="t-precio">
+  <div class="envoltura pila gap-40">
+    <div class="encabezado-seccion pila gap-16 revela" style="margin-inline:auto;text-align:center">
+      <p class="eyebrow">Precio</p>
+      <h2 class="display" id="t-precio">Empiezas por donde estás.</h2>
+      <p style="margin-inline:auto">Tres niveles. Cambias de uno a otro cuando quieras, sin perder nada de lo que ya tienes cargado.</p>
+    </div>
+
+    <div class="planes revela">
+
+      <article class="plan">
+        <p class="plan__nombre">Punto</p>
+        <p class="plan__frase">Cobrar bien y cuadrar la caja.</p>
+        <p class="plan__antes"><s>$24.900</s> precio normal</p>
+        <p class="plan__precio">$16.900<span>/mes</span></p>
+        <ul class="plan__lista">
+          <li>Ventas, Inventario y Turno</li>
+          <li>Cuadre de caja con base y diferencia</li>
+          <li>El costo de cada vaso calculado solo</li>
+          <li>Un usuario</li>
+          <li>Funciona sin internet</li>
+        </ul>
+        <a class="btn btn--fantasma btn--bloque" href="#registro" data-cta="plan-punto">Empezar con Punto</a>
+      </article>
+
+      <article class="plan plan--destacado">
+        <span class="plan__cinta">El que recomendamos</span>
+        <p class="plan__nombre">Negocio</p>
+        <p class="plan__frase">Saber cuánto te queda, no solo cuánto vendiste.</p>
+        <p class="plan__antes"><s>$49.900</s> precio normal</p>
+        <p class="plan__precio">$34.900<span>/mes</span></p>
+        <ul class="plan__lista">
+          <li><b>Todo lo de Punto</b></li>
+          <li>Margen por presentación, gastos fijos y punto de equilibrio</li>
+          <li>Domicilios por zona, con el costo real de llegar</li>
+          <li>Eventos cotizados por aforo</li>
+          <li>Usuarios ilimitados, cada uno con su rol y contraseña</li>
+          <li>El turno del vendedor te llega por WhatsApp</li>
+        </ul>
+        <a class="btn btn--rojo btn--bloque" href="#registro" data-cta="plan-negocio">Empezar con Negocio</a>
+        <p class="plan__ancla">Dos vasos de 16 oz con licor al mes lo pagan.</p>
+      </article>
+
+      <article class="plan">
+        <p class="plan__nombre">Dueño</p>
+        <p class="plan__frase">Tu plata y la del negocio, separadas.</p>
+        <p class="plan__antes"><s>$79.900</s> precio normal</p>
+        <p class="plan__precio">$54.900<span>/mes</span></p>
+        <ul class="plan__lista">
+          <li><b>Todo lo de Negocio</b></li>
+          <li>Tu sueldo, tus gastos fijos y la seguridad social</li>
+          <li>Deudas del negocio y tuyas, con orden sugerido de pago</li>
+          <li>Metas de margen y respaldo de todo el sistema</li>
+          <li>Soporte prioritario y montaje de tu carta</li>
+        </ul>
+        <a class="btn btn--fantasma btn--bloque" href="#registro" data-cta="plan-dueno">Empezar con Dueño</a>
+      </article>
+
+    </div>
+
+    <p class="planes__nota revela" data-precio-cupos>
+      Los precios tachados son los de lista. Los de abajo son <b>precio fundador para los
+      primeros <span data-cupos>20</span> negocios del Valle</b>, y se te quedan congelados
+      mientras uses FríOS — aunque después suban. Sin contrato de permanencia: si no te sirve,
+      lo dejas.
+    </p>
+  </div>
+</section>
+
+<hr class="hairline">
+
+<!-- ============ COBERTURA ============ -->
+<section class="seccion" aria-labelledby="t-cobertura">
+  <div class="envoltura">
+    <div class="alterno revela">
+      <div class="alterno__texto">
+        <p class="eyebrow eyebrow--rojo">Primera etapa</p>
+        <h2 class="display" id="t-cobertura">Arrancamos por el Valle del Cauca.</h2>
+        <p>
+          FríOS nació en un negocio de granizados de Buenaventura y lleva meses funcionando
+          con datos reales. Esta primera etapa la abrimos solo en el Valle para poder
+          acompañar a cada negocio de cerca mientras arranca.
+        </p>
+        <p>¿Estás fuera del Valle? Escríbenos igual y te avisamos cuando abramos tu zona.</p>
+      </div>
+      <div class="pila gap-20">
+        <div class="ciudades">
+          <span class="ciudad ciudad--sede">Buenaventura</span>
+          <span class="ciudad">Cali</span>
+          <span class="ciudad">Palmira</span>
+          <span class="ciudad">Tuluá</span>
+          <span class="ciudad">Buga</span>
+          <span class="ciudad">Jamundí</span>
+          <span class="ciudad">Yumbo</span>
+          <span class="ciudad">Cartago</span>
+          <span class="ciudad">Candelaria</span>
+          <span class="ciudad">Florida</span>
+          <span class="ciudad">Zarzal</span>
+          <span class="ciudad">El resto del Valle</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REGISTRO ============ -->
+<section class="seccion" id="registro" aria-labelledby="t-registro">
+  <div class="envoltura pila gap-32">
+    <div class="registro revela">
+      <div class="encabezado-seccion pila gap-16" style="margin-inline:auto;text-align:center;max-width:34ch">
+        <p class="eyebrow">Empieza</p>
+        <h2 class="display" id="t-registro">Cuéntanos de tu negocio.</h2>
+        <p style="margin-inline:auto">Te escribimos por WhatsApp, te montamos tu carta y arrancas el mismo día.</p>
+      </div>
+
+      <form id="form-registro" novalidate>
+        <div class="campos">
+          <div class="campo">
+            <label for="f-nombre">Tu nombre</label>
+            <input id="f-nombre" name="nombre" type="text" required autocomplete="name" placeholder="Cómo te llamas">
+          </div>
+          <div class="campo">
+            <label for="f-negocio">Nombre del negocio</label>
+            <input id="f-negocio" name="negocio" type="text" required autocomplete="organization" placeholder="Cómo se llama tu punto">
+          </div>
+          <div class="campo">
+            <label for="f-ciudad">Ciudad</label>
+            <input id="f-ciudad" name="ciudad" type="text" required placeholder="Buenaventura, Cali, Tuluá…">
+          </div>
+          <div class="campo">
+            <label for="f-whatsapp">Tu WhatsApp</label>
+            <input id="f-whatsapp" name="whatsapp" type="tel" required inputmode="tel" autocomplete="tel" placeholder="300 000 0000">
+          </div>
+          <div class="campo campo--ancho">
+            <label for="f-vendes">¿Qué vendes?</label>
+            <select id="f-vendes" name="vendes">
+              <option value="Granizados">Granizados</option>
+              <option value="Granizados y micheladas">Granizados y micheladas</option>
+              <option value="Micheladas">Micheladas</option>
+              <option value="Siropes">Siropes</option>
+              <option value="Licores">Licores</option>
+              <option value="Varias cosas">Varias cosas</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn--rojo btn--grande btn--bloque" type="submit" style="margin-top:22px">
+          Enviar por WhatsApp
+        </button>
+        <p class="aviso-form">Se abre WhatsApp con el mensaje ya escrito. Tú decides si lo mandas.</p>
+      </form>
+    </div>
+
+    <div class="contactos revela">
+      <a class="contacto" href="#" data-contacto="whatsapp">
+        <span>WhatsApp</span>
+        <strong data-txt="whatsapp">Escríbenos</strong>
+      </a>
+      <a class="contacto" href="#" data-contacto="email">
+        <span>Correo</span>
+        <strong data-txt="email">Escríbenos</strong>
+      </a>
+      <a class="contacto" href="#" data-contacto="instagram">
+        <span>Instagram</span>
+        <strong data-txt="instagram">Síguenos</strong>
+      </a>
+      <a class="contacto" href="#" data-contacto="tiktok">
+        <span>TikTok</span>
+        <strong data-txt="tiktok">Síguenos</strong>
+      </a>
+      <a class="contacto" href="#" data-contacto="facebook">
+        <span>Facebook</span>
+        <strong data-txt="facebook">Síguenos</strong>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ PIE ============ -->
+<footer class="pie">
+  <div class="envoltura pila gap-24">
+    <div class="pie__fila">
+      <div class="pila gap-8">
+        <span class="marca">Frí<span class="os">OS</span><span class="copo">❄</span></span>
+        <small>El sistema operativo de los negocios fríos</small>
+      </div>
+      <small>
+        Buenaventura · Valle del Cauca · Colombia<br>
+        © <span data-anio>2026</span> FríOS. Todos los derechos reservados.
+      </small>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ============================================================
+     CONFIGURACIÓN — cambia solo estas líneas
+     ============================================================ */
+  var CONFIG = {
+    // Tu WhatsApp en formato internacional, sin + ni espacios.
+    // Colombia = 57 + el número.
+    whatsapp: '573175665221',
+
+    // Correo de contacto
+    email: 'appfrios1@gmail.com',
+
+    // Usuarios de redes, sin la @. Déjalo vacío ('') para ocultar la tarjeta.
+    instagram: 'friosapp',
+    tiktok: 'frios67',
+    facebook: 'https://www.facebook.com/profile.php?id=61593679168251',
+
+    // Dirección donde vive el sistema. Mientras no la tengas, deja '' y
+    // los botones seguirán llevando al formulario.
+    urlSistema: '',
+
+    // Cuántos negocios entran con precio fundador.
+    // Cámbialo cuando se vayan llenando. Los precios de cada plan se editan
+    // directamente en el HTML, en la sección "planes".
+    cuposFundador: 20
+  };
+  /* ========================================================== */
+
+  var $  = function(s,c){ return (c||document).querySelector(s); };
+  var $$ = function(s,c){ return Array.prototype.slice.call((c||document).querySelectorAll(s)); };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- año del pie ---------- */
+  var anio = $('[data-anio]');
+  if (anio) anio.textContent = new Date().getFullYear();
+
+  /* ---------- precio ---------- */
+  /* ---------- cupos de precio fundador ---------- */
+  var cupos = $('[data-cupos]');
+  if (cupos && CONFIG.cuposFundador) cupos.textContent = CONFIG.cuposFundador;
+
+  /* ---------- contactos ---------- */
+  function pintarContacto(tipo, href, texto, mostrar){
+    var a = $('[data-contacto="'+tipo+'"]');
+    if (!a) return;
+    if (!mostrar){ a.remove(); return; }
+    a.setAttribute('href', href);
+    if (tipo !== 'email') { a.setAttribute('target','_blank'); a.setAttribute('rel','noopener'); }
+    var t = $('[data-txt="'+tipo+'"]', a);
+    if (t) t.textContent = texto;
+  }
+
+  var waLimpio = String(CONFIG.whatsapp).replace(/\D/g,'');
+  var waVisible = waLimpio.replace(/^57/, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
+
+  /* Los valores de ejemplo no se publican: mejor un aviso honesto que un enlace muerto. */
+  var waListo    = !!waLimpio && waLimpio !== '573000000000';
+  var mailListo  = !!CONFIG.email && CONFIG.email !== 'hola@frios.com';
+
+  pintarContacto('whatsapp', 'https://wa.me/'+waLimpio, waVisible, waListo);
+  pintarContacto('email', 'mailto:'+CONFIG.email, CONFIG.email, mailListo);
+  pintarContacto('instagram', 'https://instagram.com/'+CONFIG.instagram, '@'+CONFIG.instagram, !!CONFIG.instagram);
+  pintarContacto('tiktok', 'https://tiktok.com/@'+CONFIG.tiktok, '@'+CONFIG.tiktok, !!CONFIG.tiktok);
+  pintarContacto('facebook', CONFIG.facebook, 'FríOS', !!CONFIG.facebook);
+
+  /* ---------- aviso mientras no haya contacto configurado ---------- */
+  if (!waListo){
+    var form0 = $('#form-registro');
+    if (form0){
+      var btn = $('button[type="submit"]', form0);
+      if (btn){ btn.textContent = 'Todavía no estamos recibiendo registros'; btn.disabled = true; btn.style.opacity = '.55'; btn.style.cursor = 'not-allowed'; }
+      var aviso = $('.aviso-form', form0);
+      if (aviso) aviso.textContent = 'Estamos afinando los últimos detalles antes de abrir. Vuelve en unos días.';
+      $$('input, select', form0).forEach(function(c){ c.disabled = true; });
+    }
+    var caja = $('.contactos');
+    if (caja && !caja.children.length){ caja.remove(); }
+  }
+
+  /* ---------- si ya hay sistema, los CTA llevan allá ---------- */
+  if (CONFIG.urlSistema){
+    $$('[data-cta]').forEach(function(b){
+      b.setAttribute('href', CONFIG.urlSistema);
+      b.setAttribute('target','_blank');
+      b.setAttribute('rel','noopener');
+    });
+  }
+
+  /* ---------- barra pegada ---------- */
+  var barra = $('#barra');
+  var alScroll = function(){
+    if (!barra) return;
+    barra.classList.toggle('pegada', window.scrollY > 12);
+  };
+  alScroll();
+  window.addEventListener('scroll', alScroll, { passive:true });
+
+  /* ---------- revelado al bajar ---------- */
+  var reveladores = $$('.revela');
+  if (reduce || !('IntersectionObserver' in window)){
+    reveladores.forEach(function(el){ el.classList.add('dentro'); });
+  } else {
+    var obs = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('dentro'); obs.unobserve(e.target); }
+      });
+    }, { rootMargin:'0px 0px -12% 0px', threshold:0.08 });
+    reveladores.forEach(function(el){ obs.observe(el); });
+  }
+
+  /* ---------- conteo del número grande ---------- */
+  var contador = $('[data-contar]');
+  if (contador && !reduce && 'IntersectionObserver' in window){
+    var destino = parseInt(contador.getAttribute('data-contar'), 10);
+    var prefijo = contador.getAttribute('data-prefijo') || '';
+    var formato = function(n){ return prefijo + n.toLocaleString('es-CO'); };
+    var arrancado = false;
+    var obsNum = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(e){
+        if (!e.isIntersecting || arrancado) return;
+        arrancado = true;
+        var t0 = null, dur = 1100;
+        var paso = function(ts){
+          if (t0 === null) t0 = ts;
+          var p = Math.min((ts - t0) / dur, 1);
+          var suave = 1 - Math.pow(1 - p, 3);
+          contador.textContent = formato(Math.round(destino * suave));
+          if (p < 1) requestAnimationFrame(paso);
+        };
+        requestAnimationFrame(paso);
+        obsNum.unobserve(e.target);
+      });
+    }, { threshold:0.5 });
+    obsNum.observe(contador);
+  }
+
+  /* ---------- formulario → WhatsApp ---------- */
+  var form = $('#form-registro');
+  if (form){
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+
+      var faltantes = $$('input[required]', form).filter(function(i){ return !i.value.trim(); });
+      if (faltantes.length){
+        faltantes[0].focus();
+        faltantes[0].style.borderColor = '#E10600';
+        setTimeout(function(){ faltantes[0].style.borderColor = ''; }, 2200);
+        return;
+      }
+
+      var d = new FormData(form);
+      var mensaje =
+        'Hola, quiero empezar con FríOS.\n\n' +
+        'Nombre: ' + d.get('nombre') + '\n' +
+        'Negocio: ' + d.get('negocio') + '\n' +
+        'Ciudad: ' + d.get('ciudad') + '\n' +
+        'WhatsApp: ' + d.get('whatsapp') + '\n' +
+        'Vendo: ' + d.get('vendes');
+
+      window.open('https://wa.me/' + waLimpio + '?text=' + encodeURIComponent(mensaje), '_blank', 'noopener');
+    });
+  }
+
+})();
+</script>
+
+</body>
+</html>
