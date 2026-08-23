@@ -4,220 +4,346 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FríOS — Enlaces</title>
-<meta name="description" content="Todo sobre FríOS en un solo lugar: el sistema, los planes, WhatsApp y las redes.">
+<meta name="description" content="Todo sobre FríOS en un solo lugar. Y de una vez, calcula cuánto te queda de verdad.">
 <meta name="theme-color" content="#08080a">
-<meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CO">
 <meta property="og:site_name" content="FríOS">
 <meta property="og:title" content="FríOS — Enlaces">
-<meta property="og:description" content="El sistema operativo de los negocios fríos. Todo en un solo lugar.">
+<meta property="og:description" content="El sistema operativo de los negocios fríos. Calcula cuánto te queda por vaso.">
 <meta property="og:image" content="https://friospage.github.io/frios-compartir.jpg">
 <meta property="og:url" content="https://friospage.github.io/links.html">
 
 <link rel="icon" href="/frios-avatar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&display=swap">
 
 <style>
-/* FríOS · hub de enlaces — misma identidad del sistema */
 :root{
   --negro:#08080a;
   --panel:#121216;
   --panel-2:#17171c;
+  --panel-3:#1d1d24;
   --rojo:#E10600;
   --rojo-hot:#FF2D1A;
   --plata:#C8CDD2;
   --plata-dim:#7d828a;
   --blanco:#fff;
+  --verde:#34e29a;
   --linea:rgba(200,205,210,.13);
-  --linea-fuerte:rgba(200,205,210,.24);
+  --linea-fuerte:rgba(200,205,210,.26);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{overflow-x:clip}
+html{overflow-x:clip;-webkit-text-size-adjust:100%}
 body{
-  margin:0;min-height:100dvh;
-  background:var(--negro);
-  color:var(--plata);
+  margin:0;min-height:100dvh;background:var(--negro);color:var(--plata);
   font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
+  line-height:1.55;-webkit-font-smoothing:antialiased;
   display:flex;flex-direction:column;align-items:center;
-  padding:clamp(36px,9vw,60px) 20px clamp(30px,7vw,48px);
+  padding:clamp(30px,8vw,54px) 18px clamp(28px,7vw,44px);
   position:relative;overflow-x:hidden;
 }
-.resplandor{
-  position:absolute;top:-16%;left:50%;transform:translateX(-50%);
-  width:min(760px,150vw);aspect-ratio:1/.78;pointer-events:none;
-  background:radial-gradient(ellipse at center,rgba(225,6,0,.30) 0%,rgba(225,6,0,.10) 36%,rgba(225,6,0,0) 68%);
-}
-.hoja{position:relative;z-index:1;width:100%;max-width:440px;display:flex;flex-direction:column;align-items:center}
 
+/* escarcha ambiente */
+#escarcha{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
+.brasa{
+  position:absolute;top:-18%;left:50%;transform:translateX(-50%);
+  width:min(820px,160vw);aspect-ratio:1/.8;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at center,rgba(225,6,0,.32) 0%,rgba(225,6,0,.10) 36%,rgba(225,6,0,0) 68%);
+}
+
+.hoja{position:relative;z-index:2;width:100%;max-width:452px;display:flex;flex-direction:column;align-items:center}
+
+/* ---------- cabecera ---------- */
+.avatar-caja{position:relative;width:92px;height:92px}
 .avatar{
-  width:104px;height:104px;border-radius:50%;
-  border:1px solid rgba(225,6,0,.4);
-  box-shadow:0 0 34px -6px rgba(225,6,0,.55);
-  object-fit:cover;display:block;
+  width:92px;height:92px;border-radius:50%;object-fit:cover;display:block;
+  border:1px solid rgba(225,6,0,.45);
+  box-shadow:0 0 40px -6px rgba(225,6,0,.6);
 }
+.aro{
+  position:absolute;inset:-7px;border-radius:50%;
+  border:1px solid rgba(225,6,0,.35);
+  animation:pulso 3.4s ease-in-out infinite;
+}
+@keyframes pulso{
+  0%,100%{transform:scale(1);opacity:.75}
+  50%{transform:scale(1.06);opacity:.25}
+}
+
 .marca{
-  font-weight:600;font-size:2.1rem;letter-spacing:-.01em;line-height:1;
-  color:var(--blanco);margin-top:20px;
-  display:inline-flex;align-items:center;gap:.06em;
+  font-weight:600;font-size:clamp(1.95rem,7vw,2.25rem);letter-spacing:-.015em;line-height:1;
+  color:var(--blanco);margin-top:16px;display:inline-flex;align-items:center;gap:.05em;
 }
-.marca .os{color:var(--rojo);text-shadow:0 0 16px rgba(225,6,0,.7),0 0 40px rgba(225,6,0,.35)}
-.marca .copo{font-size:.74em;margin-left:.12em;filter:drop-shadow(0 0 9px rgba(255,255,255,.4))}
+.marca .os{color:var(--rojo);text-shadow:0 0 18px rgba(225,6,0,.75),0 0 44px rgba(225,6,0,.35)}
+.marca .copo{font-size:.72em;margin-left:.12em;display:inline-block;filter:drop-shadow(0 0 10px rgba(255,255,255,.45));animation:girar 14s linear infinite}
+@keyframes girar{to{transform:rotate(360deg)}}
 
 .lema{
-  margin:10px 0 0;text-align:center;
-  font-size:.68rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--plata-dim);
+  margin:11px 0 0;text-align:center;font-size:.66rem;font-weight:500;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--plata-dim);
 }
-.pitch{
-  margin:18px 0 0;text-align:center;max-width:34ch;
-  font-size:.94rem;color:var(--plata);
-}
+.pitch{margin:13px 0 0;text-align:center;max-width:32ch;font-size:.93rem;color:var(--plata)}
 
-.enlaces{width:100%;display:flex;flex-direction:column;gap:11px;margin-top:32px}
-.enlace{
-  display:flex;align-items:center;gap:13px;
-  padding:15px 18px;border-radius:14px;
-  background:var(--panel);border:1px solid var(--linea);
-  color:var(--plata);text-decoration:none;
-  font-size:.95rem;font-weight:500;
-  transition:transform .18s ease,border-color .2s ease,background .2s ease,color .2s ease;
+/* ---------- widget interactivo ---------- */
+.calc{
+  width:100%;margin-top:22px;border-radius:18px;overflow:hidden;
+  border:1px solid rgba(225,6,0,.3);
+  background:
+    radial-gradient(130% 80% at 50% 0%,rgba(225,6,0,.12),transparent 62%),
+    linear-gradient(180deg,var(--panel-2),var(--panel));
+  box-shadow:0 26px 60px -34px rgba(225,6,0,.8);
 }
-.enlace:hover{transform:translateY(-2px);border-color:var(--linea-fuerte);background:var(--panel-2);color:var(--blanco)}
+.calc__cab{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:14px 17px;border-bottom:1px solid var(--linea);background:rgba(255,255,255,.015);
+}
+.calc__tit{font-size:.66rem;font-weight:600;letter-spacing:.19em;text-transform:uppercase;color:var(--plata)}
+.calc__vivo{display:inline-flex;align-items:center;gap:6px;font-size:.6rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--plata-dim)}
+.calc__vivo i{width:5px;height:5px;border-radius:50%;background:var(--rojo);box-shadow:0 0 8px rgba(225,6,0,1);animation:latido 2.2s ease-in-out infinite}
+@keyframes latido{0%,100%{opacity:1}50%{opacity:.3}}
+.calc__cuerpo{padding:18px 17px 20px}
+
+.campo-lbl{font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--plata-dim);display:block;margin-bottom:8px}
+
+.segmentos{display:flex;gap:6px;margin-bottom:16px}
+.seg{
+  flex:1;padding:9px 4px;border-radius:9px;cursor:pointer;
+  background:var(--panel-3);border:1px solid var(--linea);
+  color:var(--plata-dim);font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:600;
+  transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+}
+.seg:hover{color:var(--blanco);border-color:var(--linea-fuerte)}
+.seg[aria-pressed="true"]{background:var(--rojo);border-color:var(--rojo);color:#fff;box-shadow:0 6px 20px -8px rgba(225,6,0,.95)}
+.seg:focus-visible{outline:2px solid var(--blanco);outline-offset:2px}
+
+.fila-vasos{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.vasos-num{
+  font-family:'Anton',sans-serif;font-size:2rem;line-height:1;color:var(--blanco);
+  min-width:2.4ch;text-align:right;font-variant-numeric:tabular-nums;
+}
+.vasos-txt{font-size:.78rem;color:var(--plata-dim)}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;
+  background:linear-gradient(90deg,var(--rojo) var(--pct,35%),rgba(200,205,210,.16) var(--pct,35%));
+  outline:none;margin:14px 0 18px;cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+  background:var(--blanco);border:3px solid var(--rojo);cursor:pointer;
+  box-shadow:0 0 14px rgba(225,6,0,.8);
+}
+input[type=range]::-moz-range-thumb{
+  width:20px;height:20px;border-radius:50%;background:var(--blanco);
+  border:3px solid var(--rojo);cursor:pointer;box-shadow:0 0 14px rgba(225,6,0,.8);
+}
+input[type=range]:focus-visible{outline:2px solid var(--blanco);outline-offset:4px}
+
+.resultado{border-top:1px solid var(--linea);padding-top:14px}
+.res-fila{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:7px 0}
+.res-fila span{font-size:.85rem;color:var(--plata-dim)}
+.res-fila b{font-weight:600;color:var(--blanco);font-variant-numeric:tabular-nums;font-size:.95rem}
+.res-total{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  border-top:1px solid var(--linea-fuerte);margin-top:8px;padding-top:14px;
+}
+.res-total span{font-size:.95rem;color:var(--blanco);font-weight:600}
+.res-total b{
+  font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(1.85rem,7vw,2.3rem);
+  line-height:1;color:var(--verde);font-variant-numeric:tabular-nums;
+}
+.calc__nota{
+  margin-top:14px;padding:11px 13px;border-radius:9px;
+  background:rgba(225,6,0,.06);border:1px solid rgba(225,6,0,.22);
+  font-size:.79rem;line-height:1.5;color:var(--plata);
+}
+.calc__nota b{color:var(--blanco);font-weight:600}
+
+/* ---------- enlaces ---------- */
+.enlaces{width:100%;display:flex;flex-direction:column;gap:10px;margin-top:22px;perspective:900px}
+.enlace{
+  display:flex;align-items:center;gap:13px;padding:14px 17px;border-radius:14px;
+  background:var(--panel);border:1px solid var(--linea);
+  color:var(--plata);text-decoration:none;font-size:.94rem;
+  transform-style:preserve-3d;
+  transition:border-color .2s ease,background .2s ease,color .2s ease,box-shadow .25s ease,transform .12s ease;
+  opacity:0;transform:translateY(16px);
+}
+.enlace.dentro{opacity:1;transform:none}
+.enlace:hover{border-color:var(--linea-fuerte);background:var(--panel-2);color:var(--blanco)}
 .enlace:focus-visible{outline:2px solid var(--blanco);outline-offset:3px}
-.enlace strong{display:block;color:var(--blanco);font-weight:600;font-size:.98rem;line-height:1.3}
-.enlace small{display:block;color:var(--plata-dim);font-size:.79rem;line-height:1.4;font-weight:400}
+.enlace strong{display:block;color:var(--blanco);font-weight:600;font-size:.97rem;line-height:1.3}
+.enlace small{display:block;color:var(--plata-dim);font-size:.78rem;line-height:1.4}
 .enlace__texto{flex:1;min-width:0}
-.enlace__icono{
-  flex:none;width:34px;height:34px;border-radius:9px;
-  display:grid;place-items:center;
+.enlace__ico{
+  flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
   background:rgba(200,205,210,.07);border:1px solid var(--linea);
 }
-.enlace__icono svg{width:17px;height:17px;fill:none;stroke:var(--plata);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.enlace__flecha{flex:none;color:var(--plata-dim);font-size:1.1rem;line-height:1}
+.enlace__ico svg{width:18px;height:18px;fill:none;stroke:var(--plata);stroke-width:1.85;stroke-linecap:round;stroke-linejoin:round}
+.enlace__fl{flex:none;color:var(--plata-dim);font-size:1.15rem;line-height:1;transition:transform .2s ease}
+.enlace:hover .enlace__fl{transform:translateX(3px)}
 
-.enlace--principal{
-  background:var(--rojo);border-color:var(--rojo);color:var(--blanco);
-  box-shadow:0 12px 34px -14px rgba(225,6,0,.95);
+.enlace--rojo{
+  background:var(--rojo);border-color:var(--rojo);color:#fff;
+  box-shadow:0 14px 36px -16px rgba(225,6,0,1);
 }
-.enlace--principal:hover{background:var(--rojo-hot);border-color:var(--rojo-hot);color:var(--blanco)}
-.enlace--principal strong{color:var(--blanco)}
-.enlace--principal small{color:rgba(255,255,255,.78)}
-.enlace--principal .enlace__icono{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.3)}
-.enlace--principal .enlace__icono svg{stroke:var(--blanco)}
-.enlace--principal .enlace__flecha{color:rgba(255,255,255,.8)}
+.enlace--rojo:hover{background:var(--rojo-hot);border-color:var(--rojo-hot);color:#fff}
+.enlace--rojo strong{color:#fff}
+.enlace--rojo small{color:rgba(255,255,255,.82)}
+.enlace--rojo .enlace__ico{background:rgba(255,255,255,.17);border-color:rgba(255,255,255,.32)}
+.enlace--rojo .enlace__ico svg{stroke:#fff}
+.enlace--rojo .enlace__fl{color:rgba(255,255,255,.85)}
 
-.separador{
-  width:100%;display:flex;align-items:center;gap:12px;margin:22px 0 4px;
-  color:var(--plata-dim);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+.sep{
+  width:100%;display:flex;align-items:center;gap:12px;margin:20px 0 2px;
+  color:var(--plata-dim);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
 }
-.separador::before,.separador::after{content:"";height:1px;background:var(--linea);flex:1}
+.sep::before,.sep::after{content:"";height:1px;background:var(--linea);flex:1}
 
-.pie{
-  margin-top:34px;text-align:center;
-  font-size:.76rem;color:var(--plata-dim);line-height:1.7;
+.redes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;margin-top:4px}
+.red{
+  display:flex;flex-direction:column;align-items:center;gap:7px;
+  padding:15px 6px;border-radius:14px;text-decoration:none;
+  background:var(--panel);border:1px solid var(--linea);
+  transition:border-color .2s ease,background .2s ease,transform .18s ease;
+  opacity:0;transform:translateY(16px);
 }
-.pie a{color:var(--plata-dim)}
+.red.dentro{opacity:1;transform:none}
+.red:hover{background:var(--panel-2);border-color:var(--linea-fuerte);transform:translateY(-3px)}
+.red:focus-visible{outline:2px solid var(--blanco);outline-offset:3px}
+.red svg{width:21px;height:21px;fill:none;stroke:var(--plata);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s ease}
+.red:hover svg{stroke:var(--blanco)}
+.red b{font-size:.72rem;font-weight:600;color:var(--blanco)}
+.red small{font-size:.65rem;color:var(--plata-dim);line-height:1.2;text-align:center}
 
-@media (prefers-reduced-motion:reduce){.enlace{transition:none}.enlace:hover{transform:none}}
+.copiado{
+  position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);
+  background:var(--blanco);color:var(--negro);font-size:.82rem;font-weight:600;
+  padding:10px 18px;border-radius:100px;z-index:50;
+  opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;
+  box-shadow:0 12px 30px -10px rgba(0,0,0,.7);
+}
+.copiado.ver{opacity:1;transform:translate(-50%,0)}
+
+.pie{margin-top:30px;text-align:center;font-size:.75rem;color:var(--plata-dim);line-height:1.7}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .enlace,.red{opacity:1;transform:none}
+  #escarcha{display:none}
+}
 </style>
 </head>
 <body>
-<div class="resplandor" aria-hidden="true"></div>
+<canvas id="escarcha" aria-hidden="true"></canvas>
+<div class="brasa" aria-hidden="true"></div>
 
 <main class="hoja">
-  <img class="avatar" src="/frios-avatar.png" alt="FríOS" width="104" height="104">
+  <div class="avatar-caja">
+    <span class="aro" aria-hidden="true"></span>
+    <img class="avatar" src="/frios-avatar.png" alt="FríOS" width="92" height="92">
+  </div>
 
   <span class="marca" aria-label="FríOS">Frí<span class="os">OS</span><span class="copo">❄</span></span>
   <p class="lema">El sistema operativo de los negocios fríos</p>
+  <p class="pitch">Granizados, micheladas, siropes y licores. Valle del Cauca.</p>
 
-  <p class="pitch">
-    Para negocios de granizados, micheladas, siropes y licores del Valle del Cauca.
-  </p>
-
+  <!-- ================= ENLACES ================= -->
   <nav class="enlaces" aria-label="Enlaces de FríOS">
 
-    <a class="enlace enlace--principal" href="https://friospage.github.io/">
-      <span class="enlace__icono" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M3 9h18M9 21V9M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
-      </span>
-      <span class="enlace__texto">
-        <strong>Conoce FríOS</strong>
-        <small>Qué hace, cómo funciona y qué módulos trae</small>
-      </span>
-      <span class="enlace__flecha" aria-hidden="true">›</span>
+    <a class="enlace enlace--rojo" href="https://friospage.github.io/" data-rev>
+      <span class="enlace__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9h18M9 21V9M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg></span>
+      <span class="enlace__texto"><strong>Conoce FríOS</strong><small>Los ocho módulos y cómo funciona</small></span>
+      <span class="enlace__fl" aria-hidden="true">›</span>
     </a>
 
-    <a class="enlace" href="https://wa.me/573175665221?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20de%20Fr%C3%adOS" target="_blank" rel="noopener">
-      <span class="enlace__icono" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4Z"/></svg>
-      </span>
-      <span class="enlace__texto">
-        <strong>Escríbenos por WhatsApp</strong>
-        <small>317 566 5221 · te respondemos el mismo día</small>
-      </span>
-      <span class="enlace__flecha" aria-hidden="true">›</span>
+    <a class="enlace" href="https://wa.me/573175665221?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20de%20Fr%C3%adOS" target="_blank" rel="noopener" data-rev>
+      <span class="enlace__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4Z"/></svg></span>
+      <span class="enlace__texto"><strong>Escríbenos por WhatsApp</strong><small>317 566 5221 · te respondemos hoy</small></span>
+      <span class="enlace__fl" aria-hidden="true">›</span>
+    </a>
+  </nav>
+
+  <!-- ================= WIDGET ================= -->
+  <section class="calc" aria-labelledby="calc-tit">
+    <div class="calc__cab">
+      <span class="calc__tit" id="calc-tit">¿Cuánto te queda hoy?</span>
+      <span class="calc__vivo"><i></i>Pruébalo</span>
+    </div>
+    <div class="calc__cuerpo">
+
+      <span class="campo-lbl">Qué vendes</span>
+      <div class="segmentos" role="group" aria-label="Tamaño del vaso">
+        <button class="seg" type="button" data-oz="9"  aria-pressed="false">9 oz</button>
+        <button class="seg" type="button" data-oz="12" aria-pressed="true">12 oz</button>
+        <button class="seg" type="button" data-oz="16" aria-pressed="false">16 oz</button>
+      </div>
+
+      <div class="segmentos" role="group" aria-label="Con o sin licor">
+        <button class="seg" type="button" data-licor="0" aria-pressed="false">Sin licor</button>
+        <button class="seg" type="button" data-licor="1" aria-pressed="true">Con licor</button>
+      </div>
+
+      <span class="campo-lbl">Cuántos vasos en el día</span>
+      <div class="fila-vasos">
+        <span class="vasos-num" id="vasos-num">22</span>
+        <span class="vasos-txt">vasos</span>
+      </div>
+      <input type="range" id="vasos" min="1" max="80" value="22" aria-label="Vasos vendidos en el día">
+
+      <div class="resultado">
+        <div class="res-fila"><span>Vendiste</span><b id="r-vendido">$330.000</b></div>
+        <div class="res-fila"><span>Se fue en insumo</span><b id="r-costo">−$60.610</b></div>
+        <div class="res-fila"><span>Margen por vaso</span><b id="r-unit">$12.245</b></div>
+        <div class="res-total"><span>Te queda</span><b id="r-total">$269.390</b></div>
+      </div>
+
+      <p class="calc__nota" id="calc-nota"></p>
+    </div>
+  </section>
+
+  <nav class="enlaces" aria-label="Más de FríOS" style="margin-top:22px">
+    <a class="enlace" href="https://friospage.github.io/#precio" data-rev>
+      <span class="enlace__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5.5A4 4 0 0 0 13 3h-2a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-2.5A4 4 0 0 1 7 14.5"/></svg></span>
+      <span class="enlace__texto"><strong>Planes y precios</strong><small>Desde $16.900 · fundador, 20 cupos</small></span>
+      <span class="enlace__fl" aria-hidden="true">›</span>
     </a>
 
-    <a class="enlace" href="https://friospage.github.io/#precio">
-      <span class="enlace__icono" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5.5A4 4 0 0 0 13 3h-2a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-2.5A4 4 0 0 1 7 14.5"/></svg>
-      </span>
-      <span class="enlace__texto">
-        <strong>Planes y precios</strong>
-        <small>Desde $16.900 al mes · precio fundador</small>
-      </span>
-      <span class="enlace__flecha" aria-hidden="true">›</span>
+    <a class="enlace" href="https://friospage.github.io/#registro" data-rev>
+      <span class="enlace__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM19 8v6M22 11h-6"/></svg></span>
+      <span class="enlace__texto"><strong>Quiero empezar</strong><small>Te montamos tu carta el mismo día</small></span>
+      <span class="enlace__fl" aria-hidden="true">›</span>
     </a>
 
-    <a class="enlace" href="https://friospage.github.io/#registro">
-      <span class="enlace__icono" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM19 8v6M22 11h-6"/></svg>
-      </span>
-      <span class="enlace__texto">
-        <strong>Quiero empezar</strong>
-        <small>Cuéntanos de tu negocio y te montamos tu carta</small>
-      </span>
-      <span class="enlace__flecha" aria-hidden="true">›</span>
-    </a>
+    <button class="enlace" type="button" id="btn-copiar" data-rev style="width:100%;text-align:left;font-family:inherit;cursor:pointer">
+      <span class="enlace__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span>
+      <span class="enlace__texto"><strong>Copiar el número</strong><small>317 566 5221</small></span>
+      <span class="enlace__fl" aria-hidden="true">⧉</span>
+    </button>
 
-    <p class="separador">Síguenos</p>
+    <p class="sep">Síguenos</p>
 
-    <a class="enlace" href="https://instagram.com/friosapp" target="_blank" rel="noopener">
-      <span class="enlace__icono" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/></svg>
-      </span>
-      <span class="enlace__texto"><strong>Instagram</strong><small>@friosapp</small></span>
-      <span class="enlace__flecha" aria-hidden="true">›</span>
-    </a>
+    <div class="redes">
+      <a class="red" href="https://instagram.com/friosapp" target="_blank" rel="noopener" data-rev>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7" fill="currentColor" stroke="none"/></svg>
+        <b>Instagram</b><small>@friosapp</small>
+      </a>
+      <a class="red" href="https://tiktok.com/@frios67" target="_blank" rel="noopener" data-rev>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3v11.5a4 4 0 1 1-3-3.87"/><path d="M15 6.5A5 5 0 0 0 20 9"/></svg>
+        <b>TikTok</b><small>@frios67</small>
+      </a>
+      <a class="red" href="https://www.facebook.com/profile.php?id=61593705747767" target="_blank" rel="noopener" data-rev>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H5.5v4H8v7h4v-7h3l1-4h-4V7.5A.5.5 0 0 1 12.5 7H15V3Z"/></svg>
+        <b>Facebook</b><small>FríOS</small>
+      </a>
+    </div>
 
-    <a class="enlace" href="https://tiktok.com/@frios67" target="_blank" rel="noopener">
-      <span class="enlace__icono" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M15 3v11.5a4 4 0 1 1-3-3.87"/><path d="M15 6.5A5 5 0 0 0 20 9"/></svg>
-      </span>
-      <span class="enlace__texto"><strong>TikTok</strong><small>@frios67</small></span>
-      <span class="enlace__flecha" aria-hidden="true">›</span>
-    </a>
-
-    <a class="enlace" href="https://www.facebook.com/profile.php?id=61593705747767" target="_blank" rel="noopener">
-      <span class="enlace__icono" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H5.5v4H8v7h4v-7h3l1-4h-4V7.5A.5.5 0 0 1 12.5 7H15V3Z"/></svg>
-      </span>
-      <span class="enlace__texto"><strong>Facebook</strong><small>FríOS</small></span>
-      <span class="enlace__flecha" aria-hidden="true">›</span>
-    </a>
-
-    <a class="enlace" href="mailto:appfrios1@gmail.com">
-      <span class="enlace__icono" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-      </span>
+    <a class="enlace" href="mailto:appfrios1@gmail.com" data-rev style="margin-top:10px">
+      <span class="enlace__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
       <span class="enlace__texto"><strong>Correo</strong><small>appfrios1@gmail.com</small></span>
-      <span class="enlace__flecha" aria-hidden="true">›</span>
+      <span class="enlace__fl" aria-hidden="true">›</span>
     </a>
 
   </nav>
@@ -228,8 +354,143 @@ body{
   </p>
 </main>
 
+<div class="copiado" id="aviso" role="status" aria-live="polite">Número copiado</div>
+
 <script>
-  document.getElementById('anio').textContent = new Date().getFullYear();
+(function(){
+  'use strict';
+  var $ = function(s, c){ return (c || document).querySelector(s); };
+  var $$ = function(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  $('#anio').textContent = new Date().getFullYear();
+
+  /* ============ CALCULADORA ============
+     Estructura de costo real: un tarro de 6 L rinde 224 oz y cuesta $35.000,
+     así que la onza sale en $156,25. Al vaso se le suman envase, tapa y pitillo. */
+  var COSTO_OZ = 35000 / 224;
+  var ENVASE = { 9:392+360+92, 12:428+360+92, 16:490+360+92 };
+  var PRECIO = { 9:[8000,11000], 12:[12000,15000], 16:[18000,20000] };
+
+  var oz = 12, licor = 1, vasos = 22;
+
+  var pesos = function(n){
+    return '$' + Math.round(n).toLocaleString('es-CO');
+  };
+
+  function pintar(){
+    var precio = PRECIO[oz][licor];
+    var costo  = oz * COSTO_OZ + ENVASE[oz];
+    var unit   = precio - costo;
+
+    $('#vasos-num').textContent = vasos;
+    $('#r-vendido').textContent = pesos(precio * vasos);
+    $('#r-costo').textContent   = '−' + pesos(costo * vasos);
+    $('#r-unit').textContent    = pesos(unit);
+    $('#r-total').textContent   = pesos(unit * vasos);
+
+    var rango = $('#vasos');
+    rango.style.setProperty('--pct', ((vasos - 1) / 79 * 100) + '%');
+
+    /* la nota compara contra la presentación más floja: 9 oz sin licor */
+    var flojo = PRECIO[9][0] - (9 * COSTO_OZ + ENVASE[9]);
+    var equiv = Math.ceil((unit * vasos) / flojo);
+    var nota = $('#calc-nota');
+    if (oz === 9 && licor === 0){
+      nota.innerHTML = 'Esta es la presentación que <b>menos deja</b>. Mueve el tamaño a 16 oz con licor y mira la diferencia sin vender un vaso más.';
+    } else {
+      nota.innerHTML = 'Para dejar lo mismo vendiendo 9 oz sin licor necesitarías <b>' + equiv +
+        ' vasos</b>. Por eso la meta va en margen y no en cantidad.';
+    }
+  }
+
+  $$('.seg').forEach(function(b){
+    b.addEventListener('click', function(){
+      /* solo se deselecciona dentro del mismo grupo */
+      $$('.seg', b.parentElement).forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+      if (b.dataset.oz) oz = parseInt(b.dataset.oz, 10);
+      if (b.dataset.licor !== undefined) licor = parseInt(b.dataset.licor, 10);
+      pintar();
+    });
+  });
+
+  $('#vasos').addEventListener('input', function(e){
+    vasos = parseInt(e.target.value, 10);
+    pintar();
+  });
+
+  pintar();
+
+  /* ============ COPIAR NÚMERO ============ */
+  $('#btn-copiar').addEventListener('click', function(){
+    var n = '3175665221';
+    var listo = function(){
+      var a = $('#aviso');
+      a.classList.add('ver');
+      setTimeout(function(){ a.classList.remove('ver'); }, 1900);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(n).then(listo).catch(function(){ window.location.href = 'tel:+57' + n; });
+    } else {
+      window.location.href = 'tel:+57' + n;
+    }
+  });
+
+  /* ============ ENTRADA ESCALONADA ============
+     Se revelan todos al cargar, no al hacer scroll: en un link-in-bio
+     ningún botón puede quedarse invisible esperando que alguien baje. */
+  var items = $$('[data-rev]');
+  if (quieto){
+    items.forEach(function(el){ el.classList.add('dentro'); });
+  } else {
+    items.forEach(function(el, i){
+      setTimeout(function(){ el.classList.add('dentro'); }, 90 + i * 55);
+    });
+  }
+
+  /* ============ ESCARCHA ============ */
+  if (!quieto){
+    var c = document.getElementById('escarcha'), x = c.getContext('2d');
+    var W, H, motas = [];
+    function medir(){
+      W = c.width = window.innerWidth * devicePixelRatio;
+      H = c.height = window.innerHeight * devicePixelRatio;
+      c.style.width = window.innerWidth + 'px';
+      c.style.height = window.innerHeight + 'px';
+      var n = Math.min(52, Math.round(window.innerWidth / 16));
+      motas = [];
+      for (var i = 0; i < n; i++){
+        motas.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: (Math.random() * 1.5 + .5) * devicePixelRatio,
+          v: (Math.random() * .22 + .07) * devicePixelRatio,
+          d: Math.random() * Math.PI * 2,
+          a: Math.random() * .38 + .12
+        });
+      }
+    }
+    function cuadro(){
+      x.clearRect(0, 0, W, H);
+      for (var i = 0; i < motas.length; i++){
+        var m = motas[i];
+        m.y += m.v;
+        m.d += .006;
+        m.x += Math.sin(m.d) * .22 * devicePixelRatio;
+        if (m.y > H + 6){ m.y = -6; m.x = Math.random() * W; }
+        x.beginPath();
+        x.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+        x.fillStyle = 'rgba(220,232,245,' + m.a + ')';
+        x.fill();
+      }
+      requestAnimationFrame(cuadro);
+    }
+    medir();
+    window.addEventListener('resize', medir);
+    requestAnimationFrame(cuadro);
+  }
+})();
 </script>
 </body>
 </html>
