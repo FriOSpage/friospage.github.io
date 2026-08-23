@@ -26,7 +26,7 @@
 <style>
 /* ============================================================
    FríOS · Landing
-   Identidad heredada del sistema (index.html de FríOS v1.5)
+   Identidad heredada del sistema FríOS v1.33
    Negro #08080a · Rojo #E10600 · Plata #C8CDD2 · Anton + Poppins
    ============================================================ */
 
@@ -454,10 +454,42 @@ a{color:inherit}
   background:rgba(225,6,0,.16);border:1px solid rgba(225,6,0,.5);
 }
 .plan__lista b{color:var(--blanco);font-weight:600}
+.plan__lista li>span{min-width:0}
 .plan__ancla{
   margin-top:14px;text-align:center;
   font-size:.82rem;color:var(--plata);
 }
+.plan__mes{color:var(--plata-dim);font-size:.84rem;margin-top:5px}
+
+/* ---------- lo que traen los tres ---------- */
+.incluido{
+  margin-top:clamp(22px,3vw,32px);
+  border:1px solid var(--linea);border-radius:var(--r-lg);
+  background:var(--panel);padding:clamp(24px,3vw,34px);
+}
+.incluido__tit{
+  font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--plata);margin-bottom:20px;
+}
+.incluido__lista{
+  list-style:none;margin:0;padding:0;display:grid;gap:11px 26px;
+  grid-template-columns:1fr;
+}
+@media (min-width:640px){.incluido__lista{grid-template-columns:1fr 1fr}}
+@media (min-width:980px){.incluido__lista{grid-template-columns:repeat(3,1fr)}}
+.incluido__lista li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:var(--t-sm);color:var(--plata);line-height:1.5;
+}
+.incluido__lista li::before{
+  content:"";flex:none;width:13px;height:13px;margin-top:5px;border-radius:50%;
+  background:rgba(225,6,0,.16);border:1px solid rgba(225,6,0,.5);
+}
+.incluido__nota{
+  margin-top:24px;padding-top:20px;border-top:1px solid var(--linea);
+  font-size:var(--t-sm);color:var(--plata-dim);line-height:1.6;
+}
+.incluido__nota b{color:var(--plata)}
 .planes__nota{
   margin-top:clamp(24px,3vw,34px);
   max-width:70ch;margin-inline:auto;text-align:center;
@@ -563,7 +595,7 @@ a{color:inherit}
       <a href="#precio">Precio</a>
       <a href="#registro">Contacto</a>
     </nav>
-    <a class="btn btn--rojo" href="#registro" data-cta="barra">Empezar</a>
+    <a class="btn btn--rojo" href="#registro" data-demo>Probar gratis</a>
   </div>
 </header>
 
@@ -585,7 +617,7 @@ a{color:inherit}
       </p>
 
       <div class="acciones">
-        <a class="btn btn--rojo btn--grande" href="#registro" data-cta="hero">Empezar ahora</a>
+        <a class="btn btn--rojo btn--grande" href="#registro" data-demo>Probar FríOS gratis</a>
         <a class="btn btn--fantasma btn--grande" href="#modulos">Ver los módulos</a>
       </div>
 
@@ -845,45 +877,41 @@ a{color:inherit}
 
     <div class="alterno revela">
       <div class="alterno__texto">
-        <p class="eyebrow eyebrow--rojo">Tu plata</p>
-        <h2 class="display">Y cuando el negocio cuadra, sigue lo tuyo.</h2>
+        <p class="eyebrow eyebrow--rojo">Inventario honesto</p>
+        <h2 class="display">Lo que se dañó también se cuenta.</h2>
         <p>
-          FríOS también lleva tu sueldo, tus gastos fijos, la seguridad social y las deudas
-          — las del negocio y las tuyas. No para juzgarte: para que veas en qué orden
-          conviene pagarlas.
+          Casi todos los sistemas te dicen cuánto <em>deberías</em> haber gastado según la receta.
+          FríOS mide la velocidad de consumo contra tus <b>conteos físicos reales</b>.
         </p>
-        <p class="cita">"Cuando la deuda llegue a cero, este mismo flujo pasa a lo tuyo: ropa, viajes, ahorro e inversión. Eso ya no es gasto, es la razón de todo esto."</p>
         <p>
-          Y si falta un dato, no lo inventa: te lo muestra incompleto y te dice cuál falta.
+          Si un tarro rindió menos porque se derramó, porque regalaste vasos o porque alguien sirvió
+          de más, ahí aparece. La receta nunca te lo iba a decir.
         </p>
+        <p class="cita">"Escribe lo que contaste y aparece la diferencia."</p>
       </div>
       <div class="panel">
         <div class="panel__cabecera">
-          <span class="panel__titulo">Orden sugerido de pago</span>
-          <span class="chip">Ejemplo · sugerencia, no orden</span>
+          <span class="panel__titulo">Conteo físico · esta semana</span>
+          <span class="chip chip--alerta">Ejemplo</span>
         </div>
         <div class="panel__cuerpo">
           <div class="filas">
             <div class="fila">
-              <span class="fila__etiqueta">1 · Insumo de la semana</span>
-              <span class="fila__valor">$210.000</span>
+              <span class="fila__etiqueta">Según la receta debiste gastar</span>
+              <span class="fila__valor">8 tarros</span>
             </div>
             <div class="fila">
-              <span class="fila__etiqueta">2 · Seguridad social</span>
-              <span class="fila__valor">$76.500</span>
+              <span class="fila__etiqueta">Lo que contaste de verdad</span>
+              <span class="fila__valor">9 tarros</span>
             </div>
-            <div class="fila">
-              <span class="fila__etiqueta">3 · Deuda proveedor</span>
-              <span class="fila__valor">$140.000</span>
-            </div>
-            <div class="fila">
-              <span class="fila__etiqueta">4 · Tu sueldo</span>
-              <span class="fila__valor fila__valor--verde">$300.000</span>
+            <div class="fila fila--total">
+              <span class="fila__etiqueta">Se fue sin venderse</span>
+              <span class="fila__valor fila__valor--ambar">1 tarro</span>
             </div>
           </div>
           <p class="nota-panel">
-            <b>Esto es un orden posible, no una instrucción:</b> los números son tuyos y la
-            decisión también.
+            Un tarro entero, <b>$35.000</b>, que no pasó por caja. Puede ser derrame, cortesía o
+            vasos mal servidos — pero ahora sabes que existe y cuánto pesa.
           </p>
         </div>
       </div>
@@ -936,68 +964,77 @@ a{color:inherit}
   <div class="envoltura pila gap-40">
     <div class="encabezado-seccion pila gap-16 revela" style="margin-inline:auto;text-align:center">
       <p class="eyebrow">Precio</p>
-      <h2 class="display" id="t-precio">Empiezas por donde estás.</h2>
-      <p style="margin-inline:auto">Tres niveles. Cambias de uno a otro cuando quieras, sin perder nada de lo que ya tienes cargado.</p>
+      <h2 class="display" id="t-precio">Un solo producto. Eliges el tamaño.</h2>
+      <p style="margin-inline:auto">Los tres planes traen exactamente lo mismo. Lo único que cambia es cuánta gente y cuántos puntos de venta. Sin cobros aparte por caja, por usuario ni por documento.</p>
     </div>
 
     <div class="planes revela">
 
       <article class="plan">
         <p class="plan__nombre">Punto</p>
-        <p class="plan__frase">Cobrar bien y cuadrar la caja.</p>
-        <p class="plan__antes"><s>$24.900</s> precio normal</p>
-        <p class="plan__precio">$16.900<span>/mes</span></p>
+        <p class="plan__frase">Un puesto, una persona.</p>
+        <p class="plan__precio">$250.000<span>/año</span></p>
+        <p class="plan__mes">$20.833 al mes</p>
         <ul class="plan__lista">
-          <li>Ventas, Inventario y Turno</li>
-          <li>Cuadre de caja con base y diferencia</li>
-          <li>El costo de cada vaso calculado solo</li>
-          <li>Un usuario</li>
-          <li>Funciona sin internet</li>
+          <li><b>1 persona</b></li>
+          <li><b>1 punto de venta</b></li>
         </ul>
         <a class="btn btn--fantasma btn--bloque" href="#registro" data-cta="plan-punto">Empezar con Punto</a>
       </article>
 
       <article class="plan plan--destacado">
         <span class="plan__cinta">El que recomendamos</span>
-        <p class="plan__nombre">Negocio</p>
-        <p class="plan__frase">Saber cuánto te queda, no solo cuánto vendiste.</p>
-        <p class="plan__antes"><s>$49.900</s> precio normal</p>
-        <p class="plan__precio">$34.900<span>/mes</span></p>
+        <p class="plan__nombre">Ruta</p>
+        <p class="plan__frase">Con vendedor y domicilios.</p>
+        <p class="plan__precio">$450.000<span>/año</span></p>
+        <p class="plan__mes">$37.500 al mes</p>
         <ul class="plan__lista">
-          <li><b>Todo lo de Punto</b></li>
-          <li>Margen por presentación, gastos fijos y punto de equilibrio</li>
-          <li>Domicilios por zona, con el costo real de llegar</li>
-          <li>Eventos cotizados por aforo</li>
-          <li>Usuarios ilimitados, cada uno con su rol y contraseña</li>
-          <li>El turno del vendedor te llega por WhatsApp</li>
+          <li><span><b>Hasta 3 personas</b>, cada una con su perfil y contraseña</span></li>
+          <li><b>1 punto de venta</b></li>
         </ul>
-        <a class="btn btn--rojo btn--bloque" href="#registro" data-cta="plan-negocio">Empezar con Negocio</a>
-        <p class="plan__ancla">Dos vasos de 16 oz con licor al mes lo pagan.</p>
+        <a class="btn btn--rojo btn--bloque" href="#registro" data-cta="plan-ruta">Empezar con Ruta</a>
+        <p class="plan__ancla">Veintisiete vasos de 16 oz con licor al año lo pagan.</p>
       </article>
 
       <article class="plan">
-        <p class="plan__nombre">Dueño</p>
-        <p class="plan__frase">Tu plata y la del negocio, separadas.</p>
-        <p class="plan__antes"><s>$79.900</s> precio normal</p>
-        <p class="plan__precio">$54.900<span>/mes</span></p>
+        <p class="plan__nombre">Marca</p>
+        <p class="plan__frase">Varios puntos, un solo sistema.</p>
+        <p class="plan__precio">$850.000<span>/año</span></p>
+        <p class="plan__mes">$70.833 al mes</p>
         <ul class="plan__lista">
-          <li><b>Todo lo de Negocio</b></li>
-          <li>Tu sueldo, tus gastos fijos y la seguridad social</li>
-          <li>Deudas del negocio y tuyas, con orden sugerido de pago</li>
-          <li>Metas de margen y respaldo de todo el sistema</li>
-          <li>Soporte prioritario y montaje de tu carta</li>
+          <li><b>Personas sin límite</b></li>
+          <li><b>Puntos de venta sin límite</b></li>
         </ul>
-        <a class="btn btn--fantasma btn--bloque" href="#registro" data-cta="plan-dueno">Empezar con Dueño</a>
+        <a class="btn btn--fantasma btn--bloque" href="#registro" data-cta="plan-marca">Empezar con Marca</a>
       </article>
 
     </div>
 
-    <p class="planes__nota revela" data-precio-cupos>
-      Los precios tachados son los de lista. Los de abajo son <b>precio fundador para los
-      primeros <span data-cupos>20</span> negocios del Valle</b>, y se te quedan congelados
-      mientras uses FríOS — aunque después suban. Sin contrato de permanencia: si no te sirve,
-      lo dejas.
-    </p>
+    <div class="incluido revela">
+      <p class="incluido__tit">Los tres planes traen todo esto</p>
+      <ul class="incluido__lista">
+        <li>Cobro por tamaño, sabor y con o sin licor</li>
+        <li>Promos por franja horaria</li>
+        <li>Doble inventario: insumo y producto congelado</li>
+        <li>Descuento automático del inventario en cada venta</li>
+        <li>Conteo físico con historial</li>
+        <li>Cierre de turno que obliga a contar el efectivo</li>
+        <li>Cuadre de caja: esperado contra contado</li>
+        <li>Margen por venta, por día y por período</li>
+        <li>Punto de equilibrio y gastos fijos propios</li>
+        <li>Domicilios por zona con tarifa</li>
+        <li>Eventos: del aforo al cierre con rentabilidad real</li>
+        <li>Reportes exportables a Excel</li>
+        <li>Facturas con numeración propia e impresión</li>
+        <li>El vendedor nunca ve costos ni márgenes</li>
+        <li>Nube opcional para sincronizar entre equipos</li>
+        <li>Se instala en el celular como app</li>
+      </ul>
+      <p class="incluido__nota">
+        <b>No hace facturación electrónica DIAN</b>, ni contabilidad, ni nómina. Y la conciliación
+        de pagos es manual — el medio de pago se registra a mano. Preferimos decírtelo ahora.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -1150,12 +1187,10 @@ a{color:inherit}
 
     // Dirección donde vive el sistema. Mientras no la tengas, deja '' y
     // los botones seguirán llevando al formulario.
-    urlSistema: '',
+    urlSistema: 'https://friosapp.pages.dev',
 
-    // Cuántos negocios entran con precio fundador.
-    // Cámbialo cuando se vayan llenando. Los precios de cada plan se editan
-    // directamente en el HTML, en la sección "planes".
-    cuposFundador: 20
+    // Los precios de cada plan se editan directamente en el HTML,
+    // en la sección "planes".
   };
   /* ========================================================== */
 
@@ -1168,9 +1203,6 @@ a{color:inherit}
   if (anio) anio.textContent = new Date().getFullYear();
 
   /* ---------- precio ---------- */
-  /* ---------- cupos de precio fundador ---------- */
-  var cupos = $('[data-cupos]');
-  if (cupos && CONFIG.cuposFundador) cupos.textContent = CONFIG.cuposFundador;
 
   /* ---------- contactos ---------- */
   function pintarContacto(tipo, href, texto, mostrar){
@@ -1210,9 +1242,9 @@ a{color:inherit}
     if (caja && !caja.children.length){ caja.remove(); }
   }
 
-  /* ---------- si ya hay sistema, los CTA llevan allá ---------- */
+  /* ---------- si ya hay sistema, el botón de probar lleva allá ---------- */
   if (CONFIG.urlSistema){
-    $$('[data-cta]').forEach(function(b){
+    $$('[data-demo]').forEach(function(b){
       b.setAttribute('href', CONFIG.urlSistema);
       b.setAttribute('target','_blank');
       b.setAttribute('rel','noopener');
