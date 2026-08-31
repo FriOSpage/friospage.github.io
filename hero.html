@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FríOS — Hero 3D (vista previa)</title>
-<meta name="robots" content="noindex">   <!-- vista previa: no compite con la landing -->
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600&display=swap">
@@ -208,9 +208,14 @@ body{
 /* El contenido se ve por defecto. Solo se esconde para animarlo si el JS
    confirmó que Motion cargó — así, si algo falla, la página se lee igual
    en vez de quedar en negro. Ese fue el error de la versión anterior. */
-html.anim .revela{opacity:0}
+/* La opacidad va por TRANSICIÓN CSS, no por animación JS.
+   Una animación por rAF se muere de hambre cuando el hilo principal está
+   ocupado decodificando los 48 fotogramas, y el texto se queda invisible.
+   Una transición CSS corre en el compositor y no depende de eso. */
+html.anim .revela{opacity:0;transition:opacity .55s ease}
+html.anim .revela.dentro{opacity:1}
 @media (prefers-reduced-motion:reduce){
-  html.anim .revela{opacity:1 !important;transform:none !important}
+  html.anim .revela{opacity:1 !important;transition:none;transform:none !important}
   .cubo3d__pista{display:none}
 }
 </style>
@@ -515,11 +520,13 @@ window.addEventListener('error', function(ev){
 
   Array.prototype.forEach.call(revelables, function(el, i){
     M.inView(el, function(){
-      /* y/scale sueltos, NO un string 'translateY(...) scale(...)'.
-         Un resorte necesita números: al darle un transform compuesto en
-         texto, Motion revienta con "Cannot read properties of undefined". */
+      // La clase enciende la opacidad por CSS: eso siempre llega.
+      el.classList.add('dentro');
+      /* Motion solo mueve. y/scale sueltos, NO un transform compuesto en
+         texto: un resorte necesita números, y con la cadena revienta con
+         "Cannot read properties of undefined". */
       M.animate(el,
-        { opacity:[0,1], y:[26,0], scale:[0.985,1] },
+        { y:[26,0], scale:[0.985,1] },
         Object.assign({}, entrada, { delay: (i % 4) * 0.06 })
       );
     }, { amount: 0.25 });
@@ -527,11 +534,19 @@ window.addEventListener('error', function(ev){
 
   /* Red de seguridad: si inView no dispara en 2,5 s, se muestra todo.
      Nunca una página en blanco por una animación que no arrancó. */
-  setTimeout(function(){
-    Array.prototype.forEach.call(revelables, function(el){
-      if (parseFloat(getComputedStyle(el).opacity) < 0.9) el.style.opacity = 1;
-    });
-  }, 2500);
+  /* Repetida, no una sola vez: con la página cargando imágenes pesadas,
+     un único chequeo a los 2,5 s puede correr antes de que el problema
+     exista. Estos cuatro cubren toda la carga. */
+  [2500, 5000, 9000, 15000].forEach(function(ms){
+    setTimeout(function(){
+      Array.prototype.forEach.call(revelables, function(el){
+        if (parseFloat(getComputedStyle(el).opacity) < 0.9){
+          el.classList.add('dentro');
+          el.style.opacity = 1;
+        }
+      });
+    }, ms);
+  });
 
   /* ============ 3 · TARJETAS QUE SE INCLINAN ============ */
   Array.prototype.forEach.call(document.querySelectorAll('[data-tilt]'), function(t){
