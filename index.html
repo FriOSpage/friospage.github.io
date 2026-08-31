@@ -6,7 +6,10 @@
 <title>FríOS — El sistema operativo de los negocios fríos</title>
 <meta name="description" content="Ventas, inventario, turnos, domicilios, eventos y finanzas para negocios de granizados, micheladas, siropes y licores. Funciona sin internet. Hecho en Buenaventura.">
 <meta name="theme-color" content="#08080a">
+<link rel="canonical" href="https://friosapp.github.io/">
 <meta name="author" content="FríOS">
+<link rel="icon" href="/frios-avatar.png">
+<link rel="apple-touch-icon" href="/frios-avatar.png">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CO">
@@ -459,7 +462,10 @@ a{color:inherit}
   margin-top:14px;text-align:center;
   font-size:.82rem;color:var(--plata);
 }
-.plan__mes{color:var(--plata-dim);font-size:.84rem;margin-top:5px}
+/* El número grande es el equivalente mensual: es lo que la gente compara.
+   El cobro real es anual y se dice aquí mismo, no en letra chica escondida. */
+.plan__mes{color:var(--plata-dim);font-size:.82rem;line-height:1.5;margin-top:7px}
+.plan__mes b{color:var(--plata);font-weight:600}
 
 /* ---------- lo que traen los tres ---------- */
 .incluido{
@@ -580,6 +586,45 @@ a{color:inherit}
 }
 .saltar:focus{left:0}
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "FríOS",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, funciona sin conexión",
+      "description": "Sistema de ventas, inventario, turnos y márgenes para negocios de granizados, micheladas, siropes y licores.",
+      "url": "https://friosapp.github.io/",
+      "inLanguage": "es-CO",
+      "offers": [
+        {"@type":"Offer","name":"Punto","price":"250000","priceCurrency":"COP","description":"1 persona, 1 punto de venta. Cobro anual."},
+        {"@type":"Offer","name":"Ruta","price":"450000","priceCurrency":"COP","description":"Hasta 3 personas, 1 punto de venta. Cobro anual."},
+        {"@type":"Offer","name":"Marca","price":"850000","priceCurrency":"COP","description":"Personas y puntos de venta sin límite. Cobro anual."}
+      ],
+      "publisher": {"@id": "https://friosapp.github.io/#negocio"}
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://friosapp.github.io/#negocio",
+      "name": "FríOS",
+      "url": "https://friosapp.github.io/",
+      "email": "appfrios1@gmail.com",
+      "telephone": "+573175665221",
+      "image": "https://friosapp.github.io/frios-compartir.jpg",
+      "address": {"@type":"PostalAddress","addressLocality":"Buenaventura","addressRegion":"Valle del Cauca","addressCountry":"CO"},
+      "areaServed": {"@type":"State","name":"Valle del Cauca"},
+      "sameAs": [
+        "https://instagram.com/friosapp",
+        "https://tiktok.com/@frios67",
+        "https://www.facebook.com/profile.php?id=61593705747767"
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -965,7 +1010,7 @@ a{color:inherit}
     <div class="encabezado-seccion pila gap-16 revela" style="margin-inline:auto;text-align:center">
       <p class="eyebrow">Precio</p>
       <h2 class="display" id="t-precio">Un solo producto. Eliges el tamaño.</h2>
-      <p style="margin-inline:auto">Los tres planes traen exactamente lo mismo. Lo único que cambia es cuánta gente y cuántos puntos de venta. Sin cobros aparte por caja, por usuario ni por documento.</p>
+      <p style="margin-inline:auto">Los tres planes traen exactamente lo mismo. Lo único que cambia es cuánta gente y cuántos puntos de venta. Sin cobros aparte por caja, por usuario ni por documento. El cobro es una sola vez al año; te lo mostramos por mes para que compares fácil.</p>
     </div>
 
     <div class="planes revela">
@@ -973,8 +1018,8 @@ a{color:inherit}
       <article class="plan">
         <p class="plan__nombre">Punto</p>
         <p class="plan__frase">Un puesto, una persona.</p>
-        <p class="plan__precio">$250.000<span>/año</span></p>
-        <p class="plan__mes">$20.833 al mes</p>
+        <p class="plan__precio">$20.833<span>/mes</span></p>
+        <p class="plan__mes"><b>Son $685 al día.</b><br>Pago anual de $250.000</p>
         <ul class="plan__lista">
           <li><b>1 persona</b></li>
           <li><b>1 punto de venta</b></li>
@@ -986,21 +1031,21 @@ a{color:inherit}
         <span class="plan__cinta">El que recomendamos</span>
         <p class="plan__nombre">Ruta</p>
         <p class="plan__frase">Con vendedor y domicilios.</p>
-        <p class="plan__precio">$450.000<span>/año</span></p>
-        <p class="plan__mes">$37.500 al mes</p>
+        <p class="plan__precio">$37.500<span>/mes</span></p>
+        <p class="plan__mes"><b>Son $1.233 al día.</b><br>Pago anual de $450.000</p>
         <ul class="plan__lista">
           <li><span><b>Hasta 3 personas</b>, cada una con su perfil y contraseña</span></li>
           <li><b>1 punto de venta</b></li>
         </ul>
         <a class="btn btn--rojo btn--bloque" href="#registro" data-cta="plan-ruta">Empezar con Ruta</a>
-        <p class="plan__ancla">Veintisiete vasos de 16 oz con licor al año lo pagan.</p>
+        <p class="plan__ancla">Con dos vasos y medio de 16 oz al mes ya está pagado.</p>
       </article>
 
       <article class="plan">
         <p class="plan__nombre">Marca</p>
         <p class="plan__frase">Varios puntos, un solo sistema.</p>
-        <p class="plan__precio">$850.000<span>/año</span></p>
-        <p class="plan__mes">$70.833 al mes</p>
+        <p class="plan__precio">$70.833<span>/mes</span></p>
+        <p class="plan__mes"><b>Son $2.329 al día.</b><br>Pago anual de $850.000</p>
         <ul class="plan__lista">
           <li><b>Personas sin límite</b></li>
           <li><b>Puntos de venta sin límite</b></li>

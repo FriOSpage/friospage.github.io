@@ -1,0 +1,5 @@
+# FríOS — friosapp.github.io
+User-agent: *
+Allow: /
+
+Sitemap: https://friosapp.github.io/sitemap.xml

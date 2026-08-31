@@ -6,6 +6,7 @@
 <title>FríOS — Enlaces</title>
 <meta name="description" content="Todo sobre FríOS en un solo lugar. Y de una vez, calcula cuánto te queda de verdad.">
 <meta name="theme-color" content="#08080a">
+<link rel="canonical" href="https://friosapp.github.io/links.html">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CO">
@@ -13,6 +14,7 @@
 <meta property="og:title" content="FríOS — Enlaces">
 <meta property="og:description" content="El sistema operativo de los negocios fríos. Calcula cuánto te queda por vaso.">
 <meta property="og:image" content="https://friosapp.github.io/frios-compartir.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="https://friosapp.github.io/links.html">
 
 <link rel="icon" href="/frios-avatar.png">
@@ -73,6 +75,9 @@ body{
   50%{transform:scale(1.06);opacity:.25}
 }
 
+/* Es un h1 para que la página tenga encabezado: hay que anular
+   el margen y el tamaño que el navegador le pone por defecto. */
+h1.marca{margin:16px 0 0}
 .marca{
   font-weight:600;font-size:clamp(1.95rem,7vw,2.25rem);letter-spacing:-.015em;line-height:1;
   color:var(--blanco);margin-top:16px;display:inline-flex;align-items:center;gap:.05em;
@@ -246,7 +251,7 @@ input[type=range]:focus-visible{outline:2px solid var(--blanco);outline-offset:4
     <img class="avatar" src="/frios-avatar.png" alt="FríOS" width="92" height="92">
   </div>
 
-  <span class="marca" aria-label="FríOS">Frí<span class="os">OS</span><span class="copo">❄</span></span>
+  <h1 class="marca" aria-label="FríOS">Frí<span class="os">OS</span><span class="copo">❄</span></h1>
   <p class="lema">El sistema operativo de los negocios fríos</p>
   <p class="pitch">Granizados, micheladas, siropes y licores. Valle del Cauca.</p>
 
@@ -307,7 +312,7 @@ input[type=range]:focus-visible{outline:2px solid var(--blanco);outline-offset:4
   <nav class="enlaces" aria-label="Más de FríOS" style="margin-top:22px">
     <a class="enlace" href="https://friosapp.github.io/#precio" data-rev>
       <span class="enlace__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5.5A4 4 0 0 0 13 3h-2a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-2.5A4 4 0 0 1 7 14.5"/></svg></span>
-      <span class="enlace__texto"><strong>Planes y precios</strong><small>Desde $250.000 al año · todo incluido</small></span>
+      <span class="enlace__texto"><strong>Planes y precios</strong><small>Desde $20.833 al mes · todo incluido</small></span>
       <span class="enlace__fl" aria-hidden="true">›</span>
     </a>
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FríOS — Esta página se derritió</title>
+<meta name="description" content="La página que buscas no existe. Vuelve al inicio de FríOS.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#08080a">
+<link rel="icon" href="/frios-avatar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600&display=swap">
+<style>
+:root{--negro:#08080a;--panel:#121216;--rojo:#E10600;--rojo-hot:#FF2D1A;
+  --plata:#C8CDD2;--plata-dim:#7d828a;--blanco:#fff;--linea:rgba(200,205,210,.14)}
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip}
+body{margin:0;min-height:100dvh;background:var(--negro);color:var(--plata);
+  font-family:'Poppins',system-ui,sans-serif;line-height:1.6;
+  -webkit-font-smoothing:antialiased;display:grid;place-items:center;
+  padding:40px 20px;position:relative;overflow-x:hidden;text-align:center}
+.brasa{position:absolute;top:-14%;left:50%;transform:translateX(-50%);
+  width:min(760px,150vw);aspect-ratio:1/.8;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(225,6,0,.28),rgba(225,6,0,0) 66%)}
+.caja{position:relative;z-index:1;max-width:460px}
+.marca{font-weight:600;font-size:1.9rem;letter-spacing:-.01em;line-height:1;
+  color:var(--blanco);display:inline-flex;align-items:center;gap:.06em;text-decoration:none}
+.marca .os{color:var(--rojo);text-shadow:0 0 18px rgba(225,6,0,.7)}
+.marca .copo{font-size:.74em;margin-left:.1em;display:inline-block;
+  filter:drop-shadow(0 0 9px rgba(255,255,255,.4));animation:girar 14s linear infinite}
+@keyframes girar{to{transform:rotate(360deg)}}
+.num{font-family:'Anton',Impact,sans-serif;font-weight:400;line-height:1;
+  font-size:clamp(4.5rem,20vw,8rem);color:var(--blanco);margin:26px 0 0;
+  text-shadow:0 0 40px rgba(225,6,0,.45)}
+h1{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;
+  line-height:1.09;font-size:clamp(1.5rem,5.5vw,2.1rem);color:var(--blanco);margin:8px 0 0}
+p{color:var(--plata-dim);margin:14px 0 0;font-size:.95rem}
+.acciones{display:flex;flex-wrap:wrap;gap:11px;justify-content:center;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;
+  font-size:.92rem;font-weight:600;padding:13px 24px;border-radius:100px;
+  border:1px solid transparent;text-decoration:none;
+  transition:transform .18s ease,background .2s ease,border-color .2s ease,color .2s ease}
+.btn--rojo{background:var(--rojo);color:#fff;box-shadow:0 12px 30px -14px rgba(225,6,0,.95)}
+.btn--rojo:hover{background:var(--rojo-hot);transform:translateY(-2px)}
+.btn--fantasma{background:transparent;color:var(--plata);border-color:var(--linea)}
+.btn--fantasma:hover{color:#fff;border-color:var(--plata-dim);transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.marca .copo{animation:none}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="brasa" aria-hidden="true"></div>
+<main class="caja">
+  <a class="marca" href="/">Frí<span class="os">OS</span><span class="copo">❄</span></a>
+  <p class="num" aria-hidden="true">404</p>
+  <h1>Esta página se derritió</h1>
+  <p>El enlace que seguiste no lleva a ninguna parte. Puede que lo hayamos movido,
+     o que se haya escrito mal.</p>
+  <div class="acciones">
+    <a class="btn btn--rojo" href="/">Ir al inicio</a>
+    <a class="btn btn--fantasma" href="https://wa.me/573175665221?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20de%20Fr%C3%adOS" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+# FríOS
+
+> Sistema de ventas, inventario, turnos y márgenes para negocios de granizados,
+> micheladas, siropes y licores. Funciona sin internet. Hecho en Buenaventura,
+> Valle del Cauca, Colombia.
+
+FríOS le dice al dueño de un negocio frío cuánto le QUEDÓ, no solo cuánto vendió.
+Registra la venta por presentación (9, 12 y 16 onzas, con o sin licor), descuenta
+el insumo por receta y calcula el margen real de cada vaso.
+
+## Planes
+Tres planes con exactamente las mismas funciones. Solo cambia cuánta gente y
+cuántos puntos de venta. El cobro es una vez al año.
+
+- Punto — $250.000 COP/año ($20.833 al mes). 1 persona, 1 punto de venta.
+- Ruta — $450.000 COP/año ($37.500 al mes). Hasta 3 personas, 1 punto de venta.
+- Marca — $850.000 COP/año ($70.833 al mes). Personas y puntos sin límite.
+
+## Lo que NO hace
+No hace facturación electrónica DIAN, ni contabilidad, ni nómina. La conciliación
+de pagos es manual: el medio de pago se registra a mano.
+
+## Enlaces
+- [Landing](https://friosapp.github.io/): qué hace, módulos, planes y precios.
+- [Enlaces y calculadora de margen](https://friosapp.github.io/links.html)
+- WhatsApp: +57 317 566 5221
+- Correo: appfrios1@gmail.com
